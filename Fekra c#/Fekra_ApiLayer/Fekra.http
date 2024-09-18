@@ -1,0 +1,6 @@
+@Fekra_HostAddress = http://localhost:5149
+
+GET {{Fekra_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

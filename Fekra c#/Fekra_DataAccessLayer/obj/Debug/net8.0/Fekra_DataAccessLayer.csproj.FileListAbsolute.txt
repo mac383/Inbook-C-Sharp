@@ -1,0 +1,12 @@
+J:\Fekra c#\Fekra_DataAccessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.deps.json
+J:\Fekra c#\Fekra_DataAccessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.dll
+J:\Fekra c#\Fekra_DataAccessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.pdb
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.AssemblyInfoInputs.cache
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.AssemblyInfo.cs
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.csproj.CoreCompileInputs.cache
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.dll
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\refint\Fekra_DataAccessLayer.dll
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.pdb
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\ref\Fekra_DataAccessLayer.dll
+J:\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.csproj.AssemblyReference.cache

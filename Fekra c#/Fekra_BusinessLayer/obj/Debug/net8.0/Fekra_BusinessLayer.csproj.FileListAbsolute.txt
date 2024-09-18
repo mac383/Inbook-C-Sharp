@@ -1,0 +1,15 @@
+J:\Fekra c#\Fekra_BusinessLayer\bin\Debug\net8.0\Fekra_BusinessLayer.deps.json
+J:\Fekra c#\Fekra_BusinessLayer\bin\Debug\net8.0\Fekra_BusinessLayer.dll
+J:\Fekra c#\Fekra_BusinessLayer\bin\Debug\net8.0\Fekra_BusinessLayer.pdb
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_BusinessLayer.AssemblyInfoInputs.cache
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_BusinessLayer.AssemblyInfo.cs
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_BusinessLayer.csproj.CoreCompileInputs.cache
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_BusinessLayer.dll
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\refint\Fekra_BusinessLayer.dll
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_BusinessLayer.pdb
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\ref\Fekra_BusinessLayer.dll
+J:\Fekra c#\Fekra_BusinessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.dll
+J:\Fekra c#\Fekra_BusinessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.pdb
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_BusinessLayer.csproj.AssemblyReference.cache
+J:\Fekra c#\Fekra_BusinessLayer\obj\Debug\net8.0\Fekra_Bu.C9F4162D.Up2Date
