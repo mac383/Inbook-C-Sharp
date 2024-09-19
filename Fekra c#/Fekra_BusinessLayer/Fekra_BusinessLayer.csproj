@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Fekra_DataAccessLayer\Fekra_DataAccessLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="services\" />
-  </ItemGroup>
-
 </Project>

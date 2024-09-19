@@ -2296,11 +2296,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "J:\\Fekra c#\\Fekra_ApiLayer\\Fekra_ApiLayer.csproj",
+      "projectUniqueName": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Fekra_ApiLayer.csproj",
       "projectName": "Fekra_ApiLayer",
-      "projectPath": "J:\\Fekra c#\\Fekra_ApiLayer\\Fekra_ApiLayer.csproj",
+      "projectPath": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Fekra_ApiLayer.csproj",
       "packagesPath": "C:\\Users\\2021\\.nuget\\packages\\",
-      "outputPath": "J:\\Fekra c#\\Fekra_ApiLayer\\obj\\",
+      "outputPath": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -2322,8 +2322,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "J:\\Fekra c#\\Fekra_BusinessLayer\\Fekra_BusinessLayer.csproj": {
-              "projectPath": "J:\\Fekra c#\\Fekra_BusinessLayer\\Fekra_BusinessLayer.csproj"
+            "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_BusinessLayer\\Fekra_BusinessLayer.csproj": {
+              "projectPath": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_BusinessLayer\\Fekra_BusinessLayer.csproj"
             }
           }
         }
