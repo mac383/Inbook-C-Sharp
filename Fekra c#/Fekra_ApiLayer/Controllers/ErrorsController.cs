@@ -104,11 +104,10 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetPagesCount_All", Name = "GetPagesCount_All")]
+        [HttpGet("GetErrorsPagesCount_All", Name = "GetErrorsPagesCount_All")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetPagesCount_All_Async()
+        public async Task<ActionResult<ApiResponse>> GetErrorsPagesCount_All_Async()
         {
             try
             {
@@ -142,11 +141,10 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetPagesCount_Handled", Name = "GetPagesCount_Handled")]
+        [HttpGet("GetErrorsPagesCount_Handled", Name = "GetErrorsPagesCount_Handled")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetPagesCount_Handled_Async()
+        public async Task<ActionResult<ApiResponse>> GetErrorsPagesCount_Handled_Async()
         {
             try
             {
@@ -180,11 +178,10 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetPagesCount_NotHandled", Name = "GetPagesCount_NotHandled")]
+        [HttpGet("GetErrorsPagesCount_NotHandled", Name = "GetErrorsPagesCount_NotHandled")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetPagesCount_NotHandled_Async()
+        public async Task<ActionResult<ApiResponse>> GetErrorsPagesCount_NotHandled_Async()
         {
             try
             {
@@ -359,12 +356,12 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetById/{errorId}", Name = "GetById")]
+        [HttpGet("GetErrorById/{errorId}", Name = "GetErrorById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetByIdAsync([FromRoute] int errorId)
+        public async Task<ActionResult<ApiResponse>> GetErrorByIdAsync([FromRoute] int errorId)
         {
             if (errorId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid error ID.", new { }));
@@ -405,12 +402,12 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetByKey/{key}", Name = "GetByKey")]
+        [HttpGet("GetErrorByKey/{key}", Name = "GetErrorByKey")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetByKeyAsync([FromRoute] string key)
+        public async Task<ActionResult<ApiResponse>> GetErrorByKeyAsync([FromRoute] string key)
         {
             if (string.IsNullOrEmpty(key))
                 return BadRequest(new ApiResponse(false, "Invalid error Key.", new { }));
