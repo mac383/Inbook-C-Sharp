@@ -29,12 +29,23 @@ namespace Fekra_ApiLayer.Controllers
             try
             {
                 bool response = await cls_Errors.SetAsHandledAsync(errorId, byAdmin);
-                return Ok
+                if (response)
+                    return Ok
+                        (
+                            new ApiResponse
+                            (
+                                response,
+                                "Success.",
+                                new { }
+                            )
+                        );
+
+                return BadRequest
                     (
                         new ApiResponse
                         (
                             response,
-                            response ? "Success." : "Please verify the error ID and admin ID.",
+                            "Please verify the error ID and admin ID.",
                             new { }
                         )
                     );
@@ -78,12 +89,23 @@ namespace Fekra_ApiLayer.Controllers
             {
 
                 bool response = await cls_Errors.SetDescriptionAsync(errorId, description, byAdmin);
-                return Ok
+                if (response)
+                    return Ok
                     (
                         new ApiResponse
                         (
                             response,
-                            response ? "Success." : "Please verify the error Id and admin ID.",
+                            "Success.",
+                            new { }
+                        )
+                    );
+
+                return BadRequest
+                    (
+                        new ApiResponse
+                        (
+                            response,
+                            "Please verify the error Id and admin ID.",
                             new { }
                         )
                     );

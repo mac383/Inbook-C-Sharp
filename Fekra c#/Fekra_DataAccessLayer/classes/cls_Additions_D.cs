@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Additions
                                         (
                                             reader.GetInt32(reader.GetOrdinal("AdditionId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("AddedDate")),
                                             reader.GetString(reader.GetOrdinal("AddedData")),
@@ -102,6 +104,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Additions
                                         (
                                             reader.GetInt32(reader.GetOrdinal("AdditionId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("AddedDate")),
                                             reader.GetString(reader.GetOrdinal("AddedData")),
@@ -166,6 +169,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Additions
                                         (
                                             reader.GetInt32(reader.GetOrdinal("AdditionId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("AddedDate")),
                                             reader.GetString(reader.GetOrdinal("AddedData")),
@@ -227,6 +231,7 @@ namespace Fekra_DataAccessLayer.classes
                                 addition = new md_Additions
                                     (
                                         reader.GetInt32(reader.GetOrdinal("AdditionId")),
+                                        reader.GetInt32(reader.GetOrdinal("TargetId")),
                                         reader.GetString(reader.GetOrdinal("TableName")),
                                         reader.GetDateTime(reader.GetOrdinal("AddedDate")),
                                         reader.GetString(reader.GetOrdinal("AddedData")),

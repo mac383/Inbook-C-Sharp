@@ -40,6 +40,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Updates
                                         (
                                             reader.GetInt32(reader.GetOrdinal("UpdateId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("UpdatedDate")),
                                             reader.GetString(reader.GetOrdinal("NewUpdatedData")),
@@ -103,6 +104,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Updates
                                         (
                                             reader.GetInt32(reader.GetOrdinal("UpdateId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("UpdatedDate")),
                                             reader.GetString(reader.GetOrdinal("NewUpdatedData")),
@@ -167,6 +169,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Updates
                                         (
                                             reader.GetInt32(reader.GetOrdinal("UpdateId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("UpdatedDate")),
                                             reader.GetString(reader.GetOrdinal("NewUpdatedData")),
@@ -228,6 +231,7 @@ namespace Fekra_DataAccessLayer.classes
                                 update = new md_Updates
                                     (
                                         reader.GetInt32(reader.GetOrdinal("UpdateId")),
+                                        reader.GetInt32(reader.GetOrdinal("TargetId")),
                                         reader.GetString(reader.GetOrdinal("TableName")),
                                         reader.GetDateTime(reader.GetOrdinal("UpdatedDate")),
                                         reader.GetString(reader.GetOrdinal("NewUpdatedData")),

@@ -40,6 +40,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Deletions
                                         (
                                             reader.GetInt32(reader.GetOrdinal("DeletionId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("DeletionDate")),
                                             reader.GetString(reader.GetOrdinal("DeletedData")),
@@ -103,6 +104,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Deletions
                                         (
                                             reader.GetInt32(reader.GetOrdinal("DeletionId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("DeletionDate")),
                                             reader.GetString(reader.GetOrdinal("DeletedData")),
@@ -167,6 +169,7 @@ namespace Fekra_DataAccessLayer.classes
                                         new md_Deletions
                                         (
                                             reader.GetInt32(reader.GetOrdinal("DeletionId")),
+                                            reader.GetInt32(reader.GetOrdinal("TargetId")),
                                             reader.GetString(reader.GetOrdinal("TableName")),
                                             reader.GetDateTime(reader.GetOrdinal("DeletionDate")),
                                             reader.GetString(reader.GetOrdinal("DeletedData")),
@@ -228,6 +231,7 @@ namespace Fekra_DataAccessLayer.classes
                                 deletion = new md_Deletions
                                     (
                                         reader.GetInt32(reader.GetOrdinal("DeletionId")),
+                                        reader.GetInt32(reader.GetOrdinal("TargetId")),
                                         reader.GetString(reader.GetOrdinal("TableName")),
                                         reader.GetDateTime(reader.GetOrdinal("DeletionDate")),
                                         reader.GetString(reader.GetOrdinal("DeletedData")),
