@@ -1277,5 +1277,128 @@ namespace Fekra_ApiLayer.Controllers
                     );
             }
         }
+
+        // completed testing.
+        [HttpGet("IsAdminEmailExist/{email}", Name = "IsAdminEmailExist")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> IsAdminEmailExistAsync([FromRoute] string email)
+        {
+            if (!Validation.IsEmailValid(email))
+                return BadRequest(new ApiResponse(false, "Invalid email (max length: 150).", new { }));
+
+            try
+            {
+                bool isExist = await cls_Admins.IsEmailExistAsync(email);
+                return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            isExist ? "Email already exists." : "Email does not exist.",
+                            new
+                            {
+                                IsExist = isExist
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
+
+        // completed testing.
+        [HttpGet("IsAdminImageNameExist/{imageName}", Name = "IsAdminImageNameExist")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> IsAdminImageNameExistAsync([FromRoute] string imageName)
+        {
+            if (string.IsNullOrEmpty(imageName) || imageName.Length > 150)
+                return BadRequest(new ApiResponse(false, "Invalid image name (max length: 150).", new { }));
+
+            try
+            {
+                bool isExist = await cls_Admins.IsImageNameExistAsync(imageName);
+                return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            isExist ? "Image name already exists." : "Image name does not exist.",
+                            new
+                            {
+                                IsExist = isExist
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
+
+        // completed testing.
+        [HttpGet("IsAdminUserNameExist/{userName}", Name = "IsAdminUserNameExist")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> IsAdminUserNameExistAsync([FromRoute] string userName)
+        {
+            if (!Validation.IsUsernameValid(userName))
+                return BadRequest(new ApiResponse(false, "Invalid username (max length: 25).", new { }));
+
+            try
+            {
+                bool isExist = await cls_Admins.IsUserNameExistAsync(userName);
+                return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            isExist ? "Username already exists." : "Username does not exist.",
+                            new
+                            {
+                                IsExist = isExist
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
     }
 }

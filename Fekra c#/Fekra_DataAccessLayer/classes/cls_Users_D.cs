@@ -1018,5 +1018,161 @@ namespace Fekra_DataAccessLayer.classes
             return rowsAffected > 0;
 
         }
+
+        // completed testing.
+        public static async Task<bool> IsEmailExistAsync(string email)
+        {
+            bool isExist = false;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"[dbo].[People_SP_IsEmailExist]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add(new SqlParameter("@email", SqlDbType.NVarChar, 150) { Value = email });
+
+                        SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Bit);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
+
+                        isExist = Convert.ToBoolean(returnParameter.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => email
+                    );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_Users_D",
+                        "IsEmailExistAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        Params
+                    ));
+
+                return false;
+            }
+
+            return isExist;
+        }
+
+        // completed testing.
+        public static async Task<bool> IsImageNameExistAsync(string imageName)
+        {
+            bool isExist = false;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"[dbo].[People_SP_IsImageNameExist]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add(new SqlParameter("@imageName", SqlDbType.NVarChar, 150) { Value = imageName });
+
+                        SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Bit);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
+
+                        isExist = Convert.ToBoolean(returnParameter.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => imageName
+                    );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_Users_D",
+                        "IsImageNameExistAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        Params
+                    ));
+
+                return false;
+            }
+
+            return isExist;
+        }
+
+        // completed testing.
+        public static async Task<bool> IsUserNameExistAsync(string userName)
+        {
+            bool isExist = false;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"[dbo].[People_SP_IsUserNameExist]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add(new SqlParameter("@userName", SqlDbType.NVarChar, 25) { Value = userName });
+
+                        SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Bit);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
+
+                        isExist = Convert.ToBoolean(returnParameter.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => userName
+                    );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_Users_D",
+                        "IsUserNameExistAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        Params
+                    ));
+
+                return false;
+            }
+
+            return isExist;
+        }
     }
 }

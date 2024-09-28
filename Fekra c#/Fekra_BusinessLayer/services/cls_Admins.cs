@@ -197,5 +197,22 @@ namespace Fekra_BusinessLayer.services
             return await cls_Admins_D.SetUserNameAsync(adminId, userName);
         }
 
+        // completed testing.
+        public static async Task<bool> IsEmailExistAsync(string email)
+        {
+            return await cls_Admins_D.IsEmailExistAsync(email);
+        }
+
+        // completed testing.
+        public static async Task<bool> IsImageNameExistAsync(string imageName)
+        {
+            return await cls_Admins_D.IsImageNameExistAsync(imageName);
+        }
+
+        // completed testing.
+        public static async Task<bool> IsUserNameExistAsync(string userName)
+        {
+            return await cls_Admins_D.IsUserNameExistAsync(userName);
+        }
     }
 }
