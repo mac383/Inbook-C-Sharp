@@ -1,7 +1,18 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\branchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\branchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33190F8F-4560-485C-88DB-E43713A7A5DD}|..\\Fekra_BusinessLayer\\Fekra_BusinessLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_businesslayer\\services\\cls_branches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8F962A4-100D-4E40-A1F7-1DE9BA0F886C}|..\\Fekra_DataAccessLayer\\Fekra_DataAccessLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_dataaccesslayer\\classes\\cls_branches_d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,8 +20,47 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "cls_Branches_D.cs",
+              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_DataAccessLayer\\classes\\cls_Branches_D.cs",
+              "RelativeDocumentMoniker": "..\\Fekra_DataAccessLayer\\classes\\cls_Branches_D.cs",
+              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_DataAccessLayer\\classes\\cls_Branches_D.cs",
+              "RelativeToolTip": "..\\Fekra_DataAccessLayer\\classes\\cls_Branches_D.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAIcBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T10:11:24.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "cls_Branches.cs",
+              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_BusinessLayer\\services\\cls_Branches.cs",
+              "RelativeDocumentMoniker": "..\\Fekra_BusinessLayer\\services\\cls_Branches.cs",
+              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_BusinessLayer\\services\\cls_Branches.cs",
+              "RelativeToolTip": "..\\Fekra_BusinessLayer\\services\\cls_Branches.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAAA4AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T10:11:44.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BranchesController.cs",
+              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\BranchesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BranchesController.cs",
+              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\BranchesController.cs",
+              "RelativeToolTip": "Controllers\\BranchesController.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAADwvwoAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T10:12:12.056Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
