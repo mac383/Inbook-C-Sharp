@@ -287,7 +287,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpPost("UpdateBranch", Name = "UpdateBranch")]
+        [HttpPut("UpdateBranch", Name = "UpdateBranch")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
