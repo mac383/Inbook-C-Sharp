@@ -4315,10 +4315,368 @@
     ]
   },
   {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "DeleteEnrolledLessonFileAsync",
+    "RelativePath": "api/EnrolledLessons/DeleteEnrolledLessonFile/{enrolledLessonId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolledLessonId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "DeleteEnrolledLessonNoteAsync",
+    "RelativePath": "api/EnrolledLessons/DeleteEnrolledLessonNote/{enrolledLessonId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolledLessonId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "GetEnrolledLessonByIdAsync",
+    "RelativePath": "api/EnrolledLessons/GetEnrolledLessonById/{enrolledLessonId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolledLessonId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "GetEnrolledLessonsByEnrolledSectionAsync",
+    "RelativePath": "api/EnrolledLessons/GetEnrolledLessonsByEnrolledSection/{enrolledSectionId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolledSectionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "IsEnrolledLessonFileExistAsync",
+    "RelativePath": "api/EnrolledLessons/IsEnrolledLessonFileExist/{fileName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "SetEnrolledLessonAsCompleted",
+    "RelativePath": "api/EnrolledLessons/SetEnrolledLessonAsCompleted/{enrolledLessonId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolledLessonId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "SetEnrolledLessonFileAsync",
+    "RelativePath": "api/EnrolledLessons/SetEnrolledLessonFile/{enrolledLessonId}/{fileTitle}/{fileURL}/{fileName}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolledLessonId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "fileTitle",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "fileURL",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
+    "Method": "SetEnrolledLessonNoteAsync",
+    "RelativePath": "api/EnrolledLessons/SetEnrolledLessonNote/{enrolledLessonId}/{note}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolledLessonId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "note",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
     "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledSectionsController",
     "Method": "DeleteEnrolledSectionFileAsync",
     "RelativePath": "api/EnrolledSections/DeleteEnrolledSectionFile/{enrolledSectionId}",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [

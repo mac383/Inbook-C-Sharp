@@ -106,7 +106,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
-        [HttpDelete("DeleteEnrolledSectionFile/{enrolledSectionId}", Name = "DeleteEnrolledSectionFile")]
+        [HttpPatch("DeleteEnrolledSectionFile/{enrolledSectionId}", Name = "DeleteEnrolledSectionFile")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
