@@ -30,6 +30,20 @@ namespace Fekra_BusinessLayer.services
             return table;
         }
 
+        // completed testing. 
+        public static string? ExtractVideoId(string videoUrl)
+        {
+            var regex = new Regex(@"[?&]v=([^&]+)");
+            var match = regex.Match(videoUrl);
+
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+
+            return null;  // إذا لم يتم العثور على Video ID
+        }
+
         // completed testing.
         public static string? ExtractPlaylistId(string playlistUrl)
         {
