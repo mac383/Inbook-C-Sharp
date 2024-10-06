@@ -11,9 +11,9 @@ namespace Fekra_BusinessLayer.services
     public class cls_SystemTransactions
     {
         // completed testing.
-        public static async Task<List<md_SystemTransactions>?> GetByTarget(int targetId)
+        public static async Task<List<md_SystemTransactions>?> GetByTarget(int targetId, string tableName)
         {
-            return await cls_SystemTransactions_D.GetByTarget(targetId);
+            return await cls_SystemTransactions_D.GetByTarget(targetId, tableName);
         }
     }
 }

@@ -7798,7 +7798,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.SystemTransactionsController",
     "Method": "GetTransactionsByTargetAsync",
-    "RelativePath": "api/SystemTransactions/GetTransactionsByTarget/{targetId}",
+    "RelativePath": "api/SystemTransactions/GetTransactionsByTarget/{targetId}/{tableName}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -7806,6 +7806,11 @@
       {
         "Name": "targetId",
         "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tableName",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

@@ -12,19 +12,19 @@ namespace Fekra_ApiLayer.Controllers
     public class SystemTransactionsController : ControllerBase
     {
         // completed testing.
-        [HttpGet("GetTransactionsByTarget/{targetId}", Name = "GetTransactionsByTarget")]
+        [HttpGet("GetTransactionsByTarget/{targetId}/{tableName}", Name = "GetTransactionsByTarget")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetTransactionsByTargetAsync([FromRoute] int targetId)
+        public async Task<ActionResult<ApiResponse>> GetTransactionsByTargetAsync([FromRoute] int targetId, string tableName)
         {
             if (targetId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid target ID.", new { }));
 
             try
             {
-                List<md_SystemTransactions>? transactions = await cls_SystemTransactions.GetByTarget(targetId);
+                List<md_SystemTransactions>? transactions = await cls_SystemTransactions.GetByTarget(targetId, tableName);
 
                 if (transactions == null)
                     return NotFound(new ApiResponse(true, "Not transactions found.", new { }));
@@ -57,6 +57,5 @@ namespace Fekra_ApiLayer.Controllers
                     );
             }
         }
-
     }
 }

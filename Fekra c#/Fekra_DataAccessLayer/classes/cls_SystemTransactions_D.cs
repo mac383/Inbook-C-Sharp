@@ -15,7 +15,7 @@ namespace Fekra_DataAccessLayer.classes
     public class cls_SystemTransactions_D
     {
         // completed testing.
-        public static async Task<List<md_SystemTransactions>?> GetByTarget(int targetId)
+        public static async Task<List<md_SystemTransactions>?> GetByTarget(int targetId, string tableName)
         {
             List<md_SystemTransactions> transactions = new List<md_SystemTransactions>();
 
@@ -23,11 +23,12 @@ namespace Fekra_DataAccessLayer.classes
             {
                 using (SqlConnection connection = cls_database.Connection())
                 {
-                    string query = @"SELECT * FROM [dbo].[SystemTransactions_FUN_GetTransactionsByTargetId] (@targetId)";
+                    string query = @"SELECT * FROM [dbo].[SystemTransactions_FUN_GetTransactionsByTargetId] (@targetId, @tableName)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@targetId", SqlDbType.Int) { Value = targetId });
+                        command.Parameters.Add(new SqlParameter("@tableName", SqlDbType.NVarChar, 100) { Value = tableName });
 
                         await connection.OpenAsync();
 
@@ -57,7 +58,8 @@ namespace Fekra_DataAccessLayer.classes
             {
                 string Params = cls_Errors_D.GetParams
                     (
-                        () => targetId
+                        () => targetId,
+                        () => tableName
                     );
 
                 await cls_Errors_D.LogErrorAsync(new md_NewError
