@@ -16,6 +16,6 @@ namespace Fekra_DataAccessLayer.Utils
         {
             return new SqlConnection(_connectionString);
         }
-
+        // connectionString: Server = .; database = SuccHubDB; user id = sa; password = mhmdmrtd383; Encrypt = false; TrustServerCertificate = true; Connection Timeout = 30
     }
 }

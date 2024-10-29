@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Fekra_ApiLayer.props" />
+</Project>

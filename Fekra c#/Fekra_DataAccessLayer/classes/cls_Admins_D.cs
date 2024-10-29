@@ -1086,7 +1086,7 @@ namespace Fekra_DataAccessLayer.classes
         }
 
         // completed testing.
-        public static async Task<bool> SetDescriptionAsync(int adminId, string description, int byAdmin)
+        public static async Task<bool> SetDescriptionAsync(int adminId, string? description, int byAdmin)
         {
             int rowsAffected = 0;
 
@@ -1101,7 +1101,7 @@ namespace Fekra_DataAccessLayer.classes
                         command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.Add(new SqlParameter("@adminId", SqlDbType.Int) { Value = adminId });
-                        command.Parameters.Add(new SqlParameter("@description", SqlDbType.NVarChar, 250) { Value = description });
+                        command.Parameters.Add(new SqlParameter("@description", SqlDbType.NVarChar, 250){ Value = string.IsNullOrEmpty(description) ? (object)DBNull.Value : description});
                         command.Parameters.Add(new SqlParameter("@byAdmin", SqlDbType.Int) { Value = byAdmin });
 
                         SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);

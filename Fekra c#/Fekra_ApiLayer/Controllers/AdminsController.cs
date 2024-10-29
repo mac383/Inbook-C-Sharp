@@ -906,13 +906,13 @@ namespace Fekra_ApiLayer.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SetAdminDescriptionAsync([FromRoute] int adminId, [FromRoute] string description, [FromRoute] int byAdmin)
+        public async Task<ActionResult<ApiResponse>> SetAdminDescriptionAsync([FromRoute] int adminId, [FromRoute] string? description, [FromRoute] int byAdmin)
         {
 
             if (adminId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid admin ID.", new { }));
 
-            if (string.IsNullOrEmpty(description) || description.Length > 250)
+            if (description?.Length > 250)
                 return BadRequest(new ApiResponse(false, "Invalid description.", new { }));
 
             if (byAdmin <= 0)

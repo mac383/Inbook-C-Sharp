@@ -155,7 +155,7 @@ namespace Fekra_BusinessLayer.services
         }
 
         // completed testing.
-        public static async Task<bool> SetDescriptionAsync(int adminId, string description, int byAdmin)
+        public static async Task<bool> SetDescriptionAsync(int adminId, string? description, int byAdmin)
         {
             return await cls_Admins_D.SetDescriptionAsync(adminId, description, byAdmin);
         }
