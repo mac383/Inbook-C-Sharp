@@ -1064,11 +1064,11 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpPatch("SetAdminImage/{adminId}/{imageURL}/{imageName}", Name = "SetAdminImage")]
+        [HttpPatch("SetAdminImage", Name = "SetAdminImage")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SetAdminImageAsync([FromRoute] int adminId, [FromRoute] string imageURL, [FromRoute] string imageName)
+        public async Task<ActionResult<ApiResponse>> SetAdminImageAsync([FromHeader] int adminId, [FromHeader] string imageURL, [FromHeader] string imageName)
         {
 
             if (adminId <= 0)
