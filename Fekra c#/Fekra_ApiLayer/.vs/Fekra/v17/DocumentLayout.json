@@ -3,11 +3,8 @@
   "WorkspaceRootPath": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{33190F8F-4560-485C-88DB-E43713A7A5DD}|..\\Fekra_BusinessLayer\\Fekra_BusinessLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_businesslayer\\utils\\notifications\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,27 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_BusinessLayer\\Utils\\Notifications\\EmailService.cs",
-              "RelativeDocumentMoniker": "..\\Fekra_BusinessLayer\\Utils\\Notifications\\EmailService.cs",
-              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_BusinessLayer\\Utils\\Notifications\\EmailService.cs",
-              "RelativeToolTip": "..\\Fekra_BusinessLayer\\Utils\\Notifications\\EmailService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBYAAAAAAAAA",
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAowKQAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T15:56:14.553Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NotificationsController.cs",
-              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\NotificationsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\NotificationsController.cs",
-              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\NotificationsController.cs",
-              "RelativeToolTip": "Controllers\\NotificationsController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAFgAAABbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T15:55:59.628Z",
+              "WhenOpened": "2024-11-03T10:40:49.904Z",
               "EditorCaption": ""
             }
           ]
