@@ -97,5 +97,11 @@ namespace Fekra_BusinessLayer.services
         {
             return await cls_Sessions_D.SetSessionAsInActiveAsync(userId);
         }
+
+        // completed testing.
+        public static async Task<(int TotalSessions, int ActiveSessions, int InActiveSessions)> GetUserSessionsAnalyticsAsync(int userId)
+        {
+            return await cls_Sessions_D.GetUserSessionsAnalyticsAsync(userId);
+        }
     }
 }

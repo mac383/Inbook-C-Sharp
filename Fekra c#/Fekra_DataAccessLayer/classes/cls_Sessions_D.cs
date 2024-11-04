@@ -610,5 +610,63 @@ namespace Fekra_DataAccessLayer.classes
             return rowsAffected > 0;
         }
 
+        // completed testing.
+        public static async Task<(int TotalSessions, int ActiveSessions, int InActiveSessions)> GetUserSessionsAnalyticsAsync(int userId)
+        {
+            int totalSessions = 0;
+            int activeSessions = 0;
+            int inactiveSessions = 0;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = "[dbo].[Sessions_SP_GetUserSessionsAnalytics]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = userId });
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                totalSessions = reader.GetInt32(reader.GetOrdinal("TotalSessions"));
+                                activeSessions = reader.GetInt32(reader.GetOrdinal("ActiveSessions"));
+                                inactiveSessions = reader.GetInt32(reader.GetOrdinal("InactiveSessions"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                (
+                    () => userId
+                );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                (
+                    ex.Message,
+                    "Data Access Layer",
+                    string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                    "cls_Sessions_D",
+                    "GetUserSessionsAnalyticsAsync",
+                    string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                    null,
+                    Params
+                ));
+
+                return (-1, -1, -1);
+            }
+
+            return (totalSessions, activeSessions, inactiveSessions);
+        }
+
     }
 }

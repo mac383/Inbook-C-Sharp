@@ -6863,6 +6863,46 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.SessionsController",
+    "Method": "GetUserSessionsAnalyticsAsync",
+    "RelativePath": "api/Sessions/GetUserSessionsAnalytics/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.SessionsController",
     "Method": "IsSessionKeyActiveAsync",
     "RelativePath": "api/Sessions/IsSessionKeyActive/{sessionKey}",
     "HttpMethod": "GET",
