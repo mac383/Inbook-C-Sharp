@@ -10,7 +10,7 @@ namespace Fekra_DataAccessLayer.models.Users_Subscriptions
     {
         public int SubscriptionId { get; set; }
         public int? PaymentId { get; set; }
-        public int PlanId { get; set; }
+        public string PlanName { get; set; }
         public double Price { get; set; }
         public byte Discount { get; set; }
         public double FinalPrice { get; set; }
@@ -21,13 +21,13 @@ namespace Fekra_DataAccessLayer.models.Users_Subscriptions
 
         public md_UserSubscription
             (
-                int subscriptionId, int? paymentId, int planId, double price, byte discount, double finalPrice,
+                int subscriptionId, int? paymentId, string planName, double price, byte discount, double finalPrice,
                 DateTime subscriptionStart, DateTime subscriptionEnd, bool isActive, int userId
             )
         {
             SubscriptionId = subscriptionId;
             PaymentId = paymentId;
-            PlanId = planId;
+            PlanName = planName;
             Price = price;
             Discount = discount;
             FinalPrice = finalPrice;

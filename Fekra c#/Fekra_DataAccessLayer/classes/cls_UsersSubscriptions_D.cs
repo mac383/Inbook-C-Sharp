@@ -384,7 +384,7 @@ namespace Fekra_DataAccessLayer.classes
                                         reader.IsDBNull(reader.GetOrdinal("PaymentId")) ? null :
                                         reader.GetInt32(reader.GetOrdinal("PaymentId")),
 
-                                        reader.GetInt32(reader.GetOrdinal("PlanId")),
+                                        reader.GetString(reader.GetOrdinal("PlanName")),
                                         Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("Price"))),
                                         reader.GetByte(reader.GetOrdinal("Discount")),
                                         Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("FinalPrice"))),
@@ -451,7 +451,7 @@ namespace Fekra_DataAccessLayer.classes
                                         reader.IsDBNull(reader.GetOrdinal("PaymentId")) ? null :
                                         reader.GetInt32(reader.GetOrdinal("PaymentId")),
 
-                                        reader.GetInt32(reader.GetOrdinal("PlanId")),
+                                        reader.GetString(reader.GetOrdinal("PlanName")),
                                         Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("Price"))),
                                         reader.GetByte(reader.GetOrdinal("Discount")),
                                         Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("FinalPrice"))),
