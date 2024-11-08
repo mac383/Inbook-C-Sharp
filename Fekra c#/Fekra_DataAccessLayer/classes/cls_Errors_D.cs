@@ -569,7 +569,8 @@ namespace Fekra_DataAccessLayer.classes
                                         reader.GetString(reader.GetOrdinal("StackTrace")),
                                         reader.GetBoolean(reader.GetOrdinal("IsHandled")),
                                         reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
-                                        reader.IsDBNull(reader.GetOrdinal("Params")) ? null : reader.GetString(reader.GetOrdinal("Params"))
+                                        reader.IsDBNull(reader.GetOrdinal("Params")) ? null : reader.GetString(reader.GetOrdinal("Params")),
+                                        reader.GetString(reader.GetOrdinal("ErrorKey"))
                                     );
                             }
                         }
@@ -634,7 +635,8 @@ namespace Fekra_DataAccessLayer.classes
                                         reader.GetString(reader.GetOrdinal("StackTrace")),
                                         reader.GetBoolean(reader.GetOrdinal("IsHandled")),
                                         reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
-                                        reader.IsDBNull(reader.GetOrdinal("Params")) ? null : reader.GetString(reader.GetOrdinal("Params"))
+                                        reader.IsDBNull(reader.GetOrdinal("Params")) ? null : reader.GetString(reader.GetOrdinal("Params")),
+                                        reader.GetString(reader.GetOrdinal("ErrorKey"))
                                     );
                             }
                         }

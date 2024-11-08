@@ -22,11 +22,12 @@ namespace Fekra_DataAccessLayer.models.Errors
         public bool IsHandled { get; set; }
         public string? Description { get; set; }
         public string? Params { get; set; }
+        public string ErrorKey { get; set; }
 
         public md_Error
             (
             int errorId, DateTime errorDate, string message, string layer, string source, string _class,
-            string method, string stackTrace, bool isHandled, string? description, string? _params
+            string method, string stackTrace, bool isHandled, string? description, string? _params, string errorKey
             )
         {
             ErrorId = errorId;
@@ -40,6 +41,7 @@ namespace Fekra_DataAccessLayer.models.Errors
             IsHandled = isHandled;
             Description = description;
             Params = _params;
+            ErrorKey = errorKey;
         }
 
     }
