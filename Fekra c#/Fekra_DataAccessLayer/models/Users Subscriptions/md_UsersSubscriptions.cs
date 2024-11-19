@@ -17,11 +17,13 @@ namespace Fekra_DataAccessLayer.models.Users_Subscriptions
         public double FinalPrice { get; set; }
         public DateTime SubscriptionStart { get; set; }
         public DateTime SubscriptionEnd { get; set; }
+        public bool IsActive { get; set; }
+        public int UserId { get; set; }
 
         public md_UsersSubscriptions
             (
                 int subscriptionId, string planName, string branchName, string userName, double price,
-                byte discount, double finalPrice, DateTime subscriptionStart, DateTime subscriptionEnd
+                byte discount, double finalPrice, DateTime subscriptionStart, DateTime subscriptionEnd, bool isActive, int userId
             )
         {
             SubscriptionId = subscriptionId;
@@ -33,6 +35,8 @@ namespace Fekra_DataAccessLayer.models.Users_Subscriptions
             FinalPrice = finalPrice;
             SubscriptionStart = subscriptionStart;
             SubscriptionEnd = subscriptionEnd;
+            IsActive = isActive;
+            UserId = userId;
         }
     }
 }

@@ -257,7 +257,9 @@ namespace Fekra_DataAccessLayer.classes
                                             reader.GetByte(reader.GetOrdinal("Discount")),
                                             Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("FinalPrice"))),
                                             reader.GetDateTime(reader.GetOrdinal("SubscriptionStart")),
-                                            reader.GetDateTime(reader.GetOrdinal("SubscriptionEnd"))
+                                            reader.GetDateTime(reader.GetOrdinal("SubscriptionEnd")),
+                                            reader.GetBoolean(reader.GetOrdinal("IsActive")),
+                                            reader.GetInt32(reader.GetOrdinal("UserId"))
                                         )
                                     );
                             }
@@ -323,7 +325,9 @@ namespace Fekra_DataAccessLayer.classes
                                             reader.GetByte(reader.GetOrdinal("Discount")),
                                             Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("FinalPrice"))),
                                             reader.GetDateTime(reader.GetOrdinal("SubscriptionStart")),
-                                            reader.GetDateTime(reader.GetOrdinal("SubscriptionEnd"))
+                                            reader.GetDateTime(reader.GetOrdinal("SubscriptionEnd")),
+                                            reader.GetBoolean(reader.GetOrdinal("IsActive")),
+                                            reader.GetInt32(reader.GetOrdinal("UserId"))
                                         )
                                     );
                             }

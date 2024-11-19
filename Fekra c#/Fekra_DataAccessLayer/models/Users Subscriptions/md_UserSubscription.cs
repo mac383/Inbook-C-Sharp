@@ -18,7 +18,7 @@ namespace Fekra_DataAccessLayer.models.Users_Subscriptions
         public DateTime SubscriptionEnd { get; set; }
         public bool IsActive { get; set; }
         public int UserId { get; set; }
-
+        
         public md_UserSubscription
             (
                 int subscriptionId, int? paymentId, string planName, double price, byte discount, double finalPrice,
