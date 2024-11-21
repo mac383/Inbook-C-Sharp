@@ -7977,18 +7977,13 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.TypicalQuestionsController",
     "Method": "GetByMaterialAsync",
-    "RelativePath": "api/TypicalQuestions/GetByMaterial/{materialId}/{packageNumber}",
+    "RelativePath": "api/TypicalQuestions/GetByMaterial/{materialId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "materialId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "packageNumber",
         "Type": "System.Int32",
         "IsRequired": true
       }

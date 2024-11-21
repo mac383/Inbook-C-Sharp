@@ -11,7 +11,7 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class TypicalQuestionsController : ControllerBase
     {
-        // completed testing.
+        // completed testing. هذه نقطة النهاية كاملة ولكن لا حاجة لاستخدامها
         [HttpGet("GetTypicalQuestionsPagesCountMaterials/{materialId}", Name = "GetTypicalQuestionsPagesCountMaterials")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -103,22 +103,19 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetByMaterial/{materialId}/{packageNumber}", Name = "GetByMaterial")]
+        [HttpGet("GetByMaterial/{materialId}", Name = "GetByMaterial")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetByMaterialAsync(int materialId, int packageNumber)
+        public async Task<ActionResult<ApiResponse>> GetByMaterialAsync(int materialId)
         {
             if (materialId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid material ID.", new { }));
 
-            if (packageNumber <= 0)
-                return BadRequest(new ApiResponse(false, "Invalid package number.", new { }));
-
             try
             {
-                List<md_TypicalQuestion>? questions = await cls_TypicalQuestions.GetByMaterialAsync(materialId, packageNumber);
+                List<md_TypicalQuestion>? questions = await cls_TypicalQuestions.GetByMaterialAsync(materialId);
 
                 if (questions == null)
                     return NotFound(new ApiResponse(true, "Not typical questions found.", new { }));

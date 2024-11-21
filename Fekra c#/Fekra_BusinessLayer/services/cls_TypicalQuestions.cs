@@ -91,9 +91,9 @@ namespace Fekra_BusinessLayer.services
         }
 
         // completed testing.
-        public static async Task<List<md_TypicalQuestion>?> GetByMaterialAsync(int materialId, int packageNumber)
+        public static async Task<List<md_TypicalQuestion>?> GetByMaterialAsync(int materialId)
         {
-            return await cls_TypicalQuestions_D.GetByMaterialAsync(materialId, packageNumber);
+            return await cls_TypicalQuestions_D.GetByMaterialAsync(materialId);
         }
 
         // completed testing.

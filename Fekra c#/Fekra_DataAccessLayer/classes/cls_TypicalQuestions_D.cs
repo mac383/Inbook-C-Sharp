@@ -127,7 +127,7 @@ namespace Fekra_DataAccessLayer.classes
         }
 
         // completed testing.
-        public static async Task<List<md_TypicalQuestion>?> GetByMaterialAsync(int materialId, int packageNumber)
+        public static async Task<List<md_TypicalQuestion>?> GetByMaterialAsync(int materialId)
         {
             List<md_TypicalQuestion> typicalQuestions = new List<md_TypicalQuestion>();
 
@@ -135,12 +135,11 @@ namespace Fekra_DataAccessLayer.classes
             {
                 using (SqlConnection connection = cls_database.Connection())
                 {
-                    string query = @"SELECT * FROM [dbo].[TypicalQuestions_FUN_GetByMaterial] (@materialId, @packageNumber)";
+                    string query = @"SELECT * FROM [dbo].[TypicalQuestions_FUN_GetByMaterial] (@materialId)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add(new SqlParameter("@materialId", SqlDbType.Int) { Value = materialId });
-                        command.Parameters.Add(new SqlParameter("@packageNumber", SqlDbType.Int) { Value = packageNumber });
 
                         await connection.OpenAsync();
 
@@ -169,6 +168,11 @@ namespace Fekra_DataAccessLayer.classes
             }
             catch (Exception ex)
             {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => materialId
+                    );
+
                 await cls_Errors_D.LogErrorAsync(new md_NewError
                     (
                         ex.Message,
@@ -178,7 +182,7 @@ namespace Fekra_DataAccessLayer.classes
                         "GetByMaterialAsync",
                         string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
                         null,
-                        null
+                        Params
                     ));
 
                 return null;

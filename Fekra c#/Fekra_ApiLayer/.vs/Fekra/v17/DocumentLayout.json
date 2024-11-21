@@ -3,11 +3,8 @@
   "WorkspaceRootPath": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C8F962A4-100D-4E40-A1F7-1DE9BA0F886C}|..\\Fekra_DataAccessLayer\\Fekra_DataAccessLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_dataaccesslayer\\classes\\cls_userssubscriptions_d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\userssubscriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\userssubscriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\typicalquestionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\typicalquestionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,27 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "cls_UsersSubscriptions_D.cs",
-              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_DataAccessLayer\\classes\\cls_UsersSubscriptions_D.cs",
-              "RelativeDocumentMoniker": "..\\Fekra_DataAccessLayer\\classes\\cls_UsersSubscriptions_D.cs",
-              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_DataAccessLayer\\classes\\cls_UsersSubscriptions_D.cs",
-              "RelativeToolTip": "..\\Fekra_DataAccessLayer\\classes\\cls_UsersSubscriptions_D.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAYwGoBAAAdAAAA",
+              "Title": "TypicalQuestionsController.cs",
+              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\TypicalQuestionsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TypicalQuestionsController.cs",
+              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\TypicalQuestionsController.cs",
+              "RelativeToolTip": "Controllers\\TypicalQuestionsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T14:13:56.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsersSubscriptionsController.cs",
-              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\UsersSubscriptionsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersSubscriptionsController.cs",
-              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\UsersSubscriptionsController.cs",
-              "RelativeToolTip": "Controllers\\UsersSubscriptionsController.cs",
-              "ViewState": "AQIAAIwAAAAAAAAAAADwvxcBAABrAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T13:44:15.742Z",
+              "WhenOpened": "2024-11-21T19:45:45.461Z",
               "EditorCaption": ""
             }
           ]
