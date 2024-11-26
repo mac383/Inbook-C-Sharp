@@ -752,8 +752,6 @@ namespace Fekra_DataAccessLayer.classes
                         command.Parameters.Add(new SqlParameter("@courseTitle", SqlDbType.NVarChar, 250) { Value = course.CourseTitle });
                         command.Parameters.Add(new SqlParameter("@description", SqlDbType.NVarChar, 250) { Value = course.Description ?? (object)DBNull.Value });
                         command.Parameters.Add(new SqlParameter("@teacherName", SqlDbType.NVarChar, 100) { Value = course.TeacherName });
-                        command.Parameters.Add(new SqlParameter("@coverUrL", SqlDbType.NVarChar) { Value = course.CoverURL ?? (object)DBNull.Value });
-                        command.Parameters.Add(new SqlParameter("@coverName", SqlDbType.NVarChar, 150) { Value = course.CoverName ?? (object)DBNull.Value });
                         command.Parameters.Add(new SqlParameter("@branchId", SqlDbType.Int) { Value = course.BranchId });
                         command.Parameters.Add(new SqlParameter("@byAdmin", SqlDbType.Int) { Value = course.ByAdmin });
 
@@ -774,8 +772,6 @@ namespace Fekra_DataAccessLayer.classes
                         () => course.CourseTitle,
                         () => course.Description,
                         () => course.TeacherName,
-                        () => course.CoverURL,
-                        () => course.CoverName,
                         () => course.BranchId,
                         () => course.ByAdmin
                     );

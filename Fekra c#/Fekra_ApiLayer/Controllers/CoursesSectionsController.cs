@@ -294,11 +294,11 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpPatch("SetCourseSectionCover/{sectionId}/{imageURL}/{imageName}/{byAdmin}", Name = "SetCourseSectionCover")]
+        [HttpPatch("SetCourseSectionCover", Name = "SetCourseSectionCover")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SetCourseSectionCoverAsync([FromRoute] int sectionId, [FromRoute] string imageURL, [FromRoute] string imageName, [FromRoute] int byAdmin)
+        public async Task<ActionResult<ApiResponse>> SetCourseSectionCoverAsync([FromHeader] int sectionId, [FromHeader] string imageURL, [FromHeader] string imageName, [FromHeader] int byAdmin)
         {
 
             if (sectionId <= 0)

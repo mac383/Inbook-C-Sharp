@@ -25,10 +25,6 @@ namespace Fekra_BusinessLayer.services
             if (!Validation.CheckLength(1, 100, course.TeacherName))
                 return false;
 
-            if (!string.IsNullOrEmpty(course.CoverName))
-                if (!Validation.CheckLength(1, 150, course.CoverName))
-                    return false;
-
             if (course.BranchId <= 0)
                 return false;
 
