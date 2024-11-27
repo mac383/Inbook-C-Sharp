@@ -45,6 +45,9 @@ namespace Fekra_DataAccessLayer.classes
                                             reader.IsDBNull(reader.GetOrdinal("CoverURL")) ?
                                             null : reader.GetString(reader.GetOrdinal("CoverURL")),
 
+                                            reader.IsDBNull(reader.GetOrdinal("CoverName")) ?
+                                            null : reader.GetString(reader.GetOrdinal("CoverName")),
+
                                             reader.GetInt32(reader.GetOrdinal("LessonsCount"))
                                         )
                                     );
