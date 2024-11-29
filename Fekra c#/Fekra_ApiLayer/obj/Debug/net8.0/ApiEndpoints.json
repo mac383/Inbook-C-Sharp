@@ -3250,7 +3250,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.CoursesController",
     "Method": "SetCourseCoverAsync",
-    "RelativePath": "api/Courses/SetCourseCover/{courseId}/{imageURL}/{imageName}/{byAdmin}",
+    "RelativePath": "api/Courses/SetCourseCover",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -3258,22 +3258,22 @@
       {
         "Name": "courseId",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "imageURL",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "imageName",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "byAdmin",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -3653,7 +3653,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.CoursesSectionsController",
     "Method": "SetCourseSectionCoverAsync",
-    "RelativePath": "api/CoursesSections/SetCourseSectionCover/{sectionId}/{imageURL}/{imageName}/{byAdmin}",
+    "RelativePath": "api/CoursesSections/SetCourseSectionCover",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -3661,22 +3661,22 @@
       {
         "Name": "sectionId",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "imageURL",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "imageName",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "byAdmin",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

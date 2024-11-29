@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\youtubedataapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\youtubedataapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|j:\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\coursessectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\coursessectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -27,15 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "YoutubeDataApiController.cs",
+              "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\YoutubeDataApiController.cs",
+              "RelativeDocumentMoniker": "Controllers\\YoutubeDataApiController.cs",
+              "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\YoutubeDataApiController.cs",
+              "RelativeToolTip": "Controllers\\YoutubeDataApiController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T11:16:15.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "CoursesSectionsController.cs",
               "DocumentMoniker": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\CoursesSectionsController.cs",
               "RelativeDocumentMoniker": "Controllers\\CoursesSectionsController.cs",
               "ToolTip": "J:\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\CoursesSectionsController.cs",
               "RelativeToolTip": "Controllers\\CoursesSectionsController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAEAAAAA/AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T18:56:04.13Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T10:22:20.495Z"
             }
           ]
         }

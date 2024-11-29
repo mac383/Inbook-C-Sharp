@@ -10,11 +10,11 @@ namespace Fekra_ApiLayer.Controllers
     public class YoutubeDataApiController : ControllerBase
     {
         // completed testing.
-        [HttpGet("IsPlaylistUrlExist/{url}", Name = "IsPlaylistUrlExist")]
+        [HttpGet("IsPlaylistUrlExist", Name = "IsPlaylistUrlExist")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> IsPlaylistUrlExistAsync([FromRoute] string url)
+        public async Task<ActionResult<ApiResponse>> IsPlaylistUrlExistAsync([FromHeader] string url)
         {
             if (string.IsNullOrEmpty(url))
                 return BadRequest(new ApiResponse(false, "URL can't be null.", new { }));
