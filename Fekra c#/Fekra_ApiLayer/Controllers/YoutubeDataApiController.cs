@@ -51,11 +51,11 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("ExtractPlaylistId/{url}", Name = "ExtractPlaylistId")]
+        [HttpGet("ExtractPlaylistId", Name = "ExtractPlaylistId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<ApiResponse> ExtractPlaylistIdAsync([FromRoute] string url)
+        public ActionResult<ApiResponse> ExtractPlaylistIdAsync([FromHeader] string url)
         {
             if (string.IsNullOrEmpty(url))
                 return BadRequest(new ApiResponse(false, "URL can't be null.", new { }));
@@ -96,11 +96,11 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing. 
-        [HttpGet("ExtractVideoId/{url}", Name = "ExtractVideoId")]
+        [HttpGet("ExtractVideoId", Name = "ExtractVideoId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<ApiResponse> ExtractVideoIdAsync([FromRoute] string url)
+        public ActionResult<ApiResponse> ExtractVideoIdAsync([FromHeader] string url)
         {
             if (string.IsNullOrEmpty(url))
                 return BadRequest(new ApiResponse(false, "URL can't be null.", new { }));
