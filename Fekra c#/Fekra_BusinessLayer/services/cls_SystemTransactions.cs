@@ -15,5 +15,11 @@ namespace Fekra_BusinessLayer.services
         {
             return await cls_SystemTransactions_D.GetByTarget(targetId, tableName);
         }
+
+        // completed testing.
+        public static async Task<(int Additions, int Deletions, int Updates)> GetTransactionsAnalyticsAsync()
+        {
+            return await cls_SystemTransactions_D.GetTransactionsAnalyticsAsync();
+        }
     }
 }

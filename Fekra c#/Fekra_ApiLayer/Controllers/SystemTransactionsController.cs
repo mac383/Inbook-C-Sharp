@@ -57,5 +57,54 @@ namespace Fekra_ApiLayer.Controllers
                     );
             }
         }
+
+        // completed testing.
+        [HttpGet("GetTransactionsAnalytics", Name = "GetTransactionsAnalytics")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> GetTransactionsAnalyticsAsync()
+        {
+            try
+            {
+                var (Additions, Deletions, Updates) = await cls_SystemTransactions.GetTransactionsAnalyticsAsync();
+
+                if (Additions >= 0)
+                {
+                    return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            "Success",
+                            new
+                            {
+                                Additions,
+                                Deletions,
+                                Updates
+                            }
+                        )
+                    );
+                }
+                else
+                {
+                    return BadRequest(new ApiResponse(false, "Error retrieving transactions data.", new { }));
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode
+                (
+                    500,
+                    new ApiResponse
+                    (
+                        false,
+                        "An error occurred while processing your request.",
+                        new { Error = ex.Message }
+                    )
+                );
+            }
+        }
+
     }
 }

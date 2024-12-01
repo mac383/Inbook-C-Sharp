@@ -668,5 +668,57 @@ namespace Fekra_DataAccessLayer.classes
             return (totalSessions, activeSessions, inactiveSessions);
         }
 
+        // completed testing.
+        public static async Task<(int TotalSessions, int ActiveSessions, int InActiveSessions)> GetUsersSessionsAnalyticsAsync()
+        {
+            int totalSessions = 0;
+            int activeSessions = 0;
+            int inactiveSessions = 0;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = "[dbo].[Sessions_SP_GetUsersSessionsAnalytics]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                totalSessions = reader.GetInt32(reader.GetOrdinal("TotalSessions"));
+                                activeSessions = reader.GetInt32(reader.GetOrdinal("ActiveSessions"));
+                                inactiveSessions = reader.GetInt32(reader.GetOrdinal("InactiveSessions"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                (
+                    ex.Message,
+                    "Data Access Layer",
+                    string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                    "cls_Sessions_D",
+                    "GetUsersSessionsAnalyticsAsync",
+                    string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                    null,
+                    null
+                ));
+
+                return (-1, -1, -1);
+            }
+
+            return (totalSessions, activeSessions, inactiveSessions);
+        }
+
     }
 }

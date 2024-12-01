@@ -593,5 +593,53 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        // completed testing.
+        [HttpGet("GetUsersSessionsAnalytics", Name = "GetUsersSessionsAnalytics")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> GetUsersSessionsAnalyticsAsync()
+        {
+            try
+            {
+                var (TotalSessions, ActiveSessions, InActiveSessions) = await cls_Sessions.GetUsersSessionsAnalyticsAsync();
+
+                if (TotalSessions >= 0)
+                {
+                    return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            "Success",
+                            new
+                            {
+                                TotalSessions,
+                                ActiveSessions,
+                                InActiveSessions
+                            }
+                        )
+                    );
+                }
+                else
+                {
+                    return BadRequest(new ApiResponse(false, "Error retrieving sessions data.", new { }));
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode
+                (
+                    500,
+                    new ApiResponse
+                    (
+                        false,
+                        "An error occurred while processing your request.",
+                        new { Error = ex.Message }
+                    )
+                );
+            }
+        }
+
     }
 }

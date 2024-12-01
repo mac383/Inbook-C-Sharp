@@ -995,5 +995,53 @@ namespace Fekra_ApiLayer.Controllers
                     );
             }
         }
+
+        // completed testing.
+        [HttpGet("GetUsersAnalytics", Name = "GetUsersAnalytics")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> GetUsersAnalyticsAsync()
+        {
+            try
+            {
+                var (TotalUsers, TotalUsersThisMonth) = await cls_Users.GetUsersAnalyticsAsync();
+
+                if (TotalUsers >= 0)
+                {
+                    return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            "Success",
+                            new
+                            {
+                                TotalUsers,
+                                TotalUsersThisMonth
+                            }
+                        )
+                    );
+                }
+                else
+                {
+                    return BadRequest(new ApiResponse(false, "Error retrieving users data.", new { }));
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode
+                (
+                    500,
+                    new ApiResponse
+                    (
+                        false,
+                        "An error occurred while processing your request.",
+                        new { Error = ex.Message }
+                    )
+                );
+            }
+        }
+
     }
 }

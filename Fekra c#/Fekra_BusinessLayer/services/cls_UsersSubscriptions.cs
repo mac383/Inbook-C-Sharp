@@ -84,6 +84,12 @@ namespace Fekra_BusinessLayer.services
         }
 
         // completed testing.
+        public static async Task<bool> CheckAllUsersSubscriptionsAsync()
+        {
+            return await cls_UsersSubscriptions_D.CheckAllUsersSubscriptionsAsync();
+        }
+
+        // completed testing.
         public static async Task<bool> IsUserHasActiveSubscriptionAsync(int userId)
         {
             return await cls_UsersSubscriptions_D.IsUserHasActiveSubscriptionAsync(userId);
@@ -96,6 +102,12 @@ namespace Fekra_BusinessLayer.services
                 return -1;
 
             return await cls_UsersSubscriptions_D.NewAsync(subscription);
+        }
+
+        // completed testing.
+        public static async Task<(int TotalSubscriptions, int TotalSubscriptionsThisMonth)> GetUsersSubscriptionsAnalyticsAsync()
+        {
+            return await cls_UsersSubscriptions_D.GetUsersSubscriptionsAnalyticsAsync();
         }
     }
 }

@@ -79,5 +79,58 @@ namespace Fekra_DataAccessLayer.classes
 
             return transactions.Count > 0 ? transactions : null;
         }
+
+        // completed testing.
+        public static async Task<(int Additions, int Deletions, int Updates)> GetTransactionsAnalyticsAsync()
+        {
+            int additions = 0;
+            int deletions = 0;
+            int updates = 0;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = "[dbo].[SystemTransactions_SP_GetTransactionsCountAnalytics]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                additions = reader.GetInt32(reader.GetOrdinal("Additions"));
+                                deletions = reader.GetInt32(reader.GetOrdinal("Deletions"));
+                                updates = reader.GetInt32(reader.GetOrdinal("Updates"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                (
+                    ex.Message,
+                    "Data Access Layer",
+                    string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                    "cls_SystemTransactions_D",
+                    "GetTransactionsAnalyticsAsync",
+                    string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                    null,
+                    null
+                ));
+
+                return (-1, -1, -1);
+            }
+
+            return (additions, deletions, updates);
+        }
+
     }
 }

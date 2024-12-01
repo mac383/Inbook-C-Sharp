@@ -547,6 +547,52 @@ namespace Fekra_DataAccessLayer.classes
         }
 
         // completed testing.
+        public static async Task<bool> CheckAllUsersSubscriptionsAsync()
+        {
+            bool isSuccessful = false;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"[dbo].[UsersSubscriptions_SP_CheckAllUsersSubscriptions]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Bit);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
+
+                        isSuccessful = Convert.ToBoolean(returnParameter.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_UsersSubscriptions_D",
+                        "CheckAllUsersSubscriptionsAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        null
+                    ));
+
+                return false;
+            }
+
+            return isSuccessful;
+        }
+
+
+        // completed testing.
         public static async Task<bool> IsUserHasActiveSubscriptionAsync(int userId)
         {
             bool isHasActiveSubscription = false;
@@ -651,5 +697,56 @@ namespace Fekra_DataAccessLayer.classes
 
             return insertedId;
         }
+
+        // completed testing.
+        public static async Task<(int TotalSubscriptions, int TotalSubscriptionsThisMonth)> GetUsersSubscriptionsAnalyticsAsync()
+        {
+            int totalSubscriptions = 0;
+            int totalSubscriptionsThisMonth = 0;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = "[dbo].[UsersSubscriptions_SP_GetUsersSubscriptionsCountAnalytics]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                totalSubscriptions = reader.GetInt32(reader.GetOrdinal("TotalSubscriptions"));
+                                totalSubscriptionsThisMonth = reader.GetInt32(reader.GetOrdinal("TotalSubscriptionsThisMonth"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                (
+                    ex.Message,
+                    "Data Access Layer",
+                    string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                    "cls_UsersSubscriptions_D",
+                    "GetUsersSubscriptionsAnalyticsAsync",
+                    string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                    null,
+                    null
+                ));
+
+                return (-1, -1);
+            }
+
+            return (totalSubscriptions, totalSubscriptionsThisMonth);
+        }
+
     }
 }

@@ -445,6 +445,44 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [HttpGet("CheckAllUsersSubscriptions", Name = "CheckAllUsersSubscriptions")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> CheckAllUsersSubscriptionsAsync()
+        {
+            try
+            {
+                bool isSuccessful = await cls_UsersSubscriptions.CheckAllUsersSubscriptionsAsync();
+
+                return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            isSuccessful ? "Subscriptions checked successfully." : "Subscriptions were not checked successfully.",
+                            new
+                            {
+                                IsSuccessful = isSuccessful
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
+
+        // completed testing.
         [HttpGet("IsUserHasActiveSubscription/{userId}", Name = "IsUserHasActiveSubscription")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -532,6 +570,53 @@ namespace Fekra_ApiLayer.Controllers
                             new { }
                         )
                     );
+            }
+        }
+
+        // completed testing.
+        [HttpGet("GetUsersSubscriptionsAnalytics", Name = "GetUsersSubscriptionsAnalytics")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> GetUsersSubscriptionsAnalyticsAsync()
+        {
+            try
+            {
+                var (TotalSubscriptions, TotalSubscriptionsThisMonth) = await cls_UsersSubscriptions.GetUsersSubscriptionsAnalyticsAsync();
+
+                if (TotalSubscriptions >= 0)
+                {
+                    return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            "Success",
+                            new
+                            {
+                                TotalSubscriptions,
+                                TotalSubscriptionsThisMonth
+                            }
+                        )
+                    );
+                }
+                else
+                {
+                    return BadRequest(new ApiResponse(false, "Error retrieving subscriptions data.", new { }));
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode
+                (
+                    500,
+                    new ApiResponse
+                    (
+                        false,
+                        "An error occurred while processing your request.",
+                        new { Error = ex.Message }
+                    )
+                );
             }
         }
     }

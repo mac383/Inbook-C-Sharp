@@ -163,5 +163,11 @@ namespace Fekra_BusinessLayer.services
         {
             return await cls_Users_D.IsUserNameExistAsync(userName);
         }
+
+        // completed testing.
+        public static async Task<(int TotalUsers, int TotalUsersThisMonth)> GetUsersAnalyticsAsync()
+        {
+            return await cls_Users_D.GetUsersAnalyticsAsync();
+        }
     }
 }

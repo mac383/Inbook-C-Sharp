@@ -6903,6 +6903,40 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.SessionsController",
+    "Method": "GetUsersSessionsAnalyticsAsync",
+    "RelativePath": "api/Sessions/GetUsersSessionsAnalytics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.SessionsController",
     "Method": "IsSessionKeyActiveAsync",
     "RelativePath": "api/Sessions/IsSessionKeyActive/{sessionKey}",
     "HttpMethod": "GET",
@@ -7849,6 +7883,40 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.SystemTransactionsController",
+    "Method": "GetTransactionsAnalyticsAsync",
+    "RelativePath": "api/SystemTransactions/GetTransactionsAnalytics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "Fekra_ApiLayer.Common.ApiResponse",
@@ -9223,6 +9291,40 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.UsersController",
+    "Method": "GetUsersAnalyticsAsync",
+    "RelativePath": "api/Users/GetUsersAnalytics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.UsersController",
     "Method": "GetUsersByFullNameAsync",
     "RelativePath": "api/Users/GetUsersByFullName/{fullName}",
     "HttpMethod": "GET",
@@ -9727,6 +9829,31 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.UsersSubscriptionsController",
+    "Method": "CheckAllUsersSubscriptionsAsync",
+    "RelativePath": "api/UsersSubscriptions/CheckAllUsersSubscriptions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.UsersSubscriptionsController",
     "Method": "CheckUserSubscriptionAsync",
     "RelativePath": "api/UsersSubscriptions/CheckUserSubscription/{userId}",
     "HttpMethod": "GET",
@@ -10003,6 +10130,40 @@
           "text/json"
         ],
         "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.UsersSubscriptionsController",
+    "Method": "GetUsersSubscriptionsAnalyticsAsync",
+    "RelativePath": "api/UsersSubscriptions/GetUsersSubscriptionsAnalytics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       },
       {
         "Type": "System.Void",
@@ -10406,7 +10567,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.YoutubeDataApiController",
     "Method": "ExtractPlaylistIdAsync",
-    "RelativePath": "api/YoutubeDataApi/ExtractPlaylistId/{url}",
+    "RelativePath": "api/YoutubeDataApi/ExtractPlaylistId",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10414,7 +10575,7 @@
       {
         "Name": "url",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -10446,7 +10607,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.YoutubeDataApiController",
     "Method": "ExtractVideoIdAsync",
-    "RelativePath": "api/YoutubeDataApi/ExtractVideoId/{url}",
+    "RelativePath": "api/YoutubeDataApi/ExtractVideoId",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10454,7 +10615,7 @@
       {
         "Name": "url",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -10486,7 +10647,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.YoutubeDataApiController",
     "Method": "IsPlaylistUrlExistAsync",
-    "RelativePath": "api/YoutubeDataApi/IsPlaylistUrlExist/{url}",
+    "RelativePath": "api/YoutubeDataApi/IsPlaylistUrlExist",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10494,7 +10655,7 @@
       {
         "Name": "url",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

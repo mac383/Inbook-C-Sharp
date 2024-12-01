@@ -1174,5 +1174,55 @@ namespace Fekra_DataAccessLayer.classes
 
             return isExist;
         }
+
+        // completed testing.
+        public static async Task<(int TotalUsers, int TotalUsersThisMonth)> GetUsersAnalyticsAsync()
+        {
+            int totalUsers = 0;
+            int totalUsersThisMonth = 0;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = "[dbo].[Users_SP_GetUsersCountAnalytics]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                totalUsers = reader.GetInt32(reader.GetOrdinal("TotalUsers"));
+                                totalUsersThisMonth = reader.GetInt32(reader.GetOrdinal("TotalUsersThisMonth"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                (
+                    ex.Message,
+                    "Data Access Layer",
+                    string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                    "cls_Users_D",
+                    "GetUsersAnalyticsAsync",
+                    string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                    null,
+                    null
+                ));
+
+                return (-1, -1);
+            }
+
+            return (totalUsers, totalUsersThisMonth);
+        }
+
     }
 }
