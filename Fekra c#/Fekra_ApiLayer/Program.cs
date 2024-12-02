@@ -14,6 +14,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins",
         builder => builder.WithOrigins("http://localhost:3000",
                                        "http://192.168.1.105:3000",
+                                       "https://console.inbook.tech",
                                        "https://inbook.tech",
                                        "https://www.inbook.tech") // أضف المزيد من النطاقات هنا إذا لزم الأمر
                           .AllowAnyMethod()
