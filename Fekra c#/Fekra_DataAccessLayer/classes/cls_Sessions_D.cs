@@ -505,7 +505,7 @@ namespace Fekra_DataAccessLayer.classes
         }
 
         // completed testing.
-        public static async Task<int> NewAsync(md_NewSession session)
+        public static async Task<int> NewAsync(int userId, string key)
         {
             int insertedId = 0;
 
@@ -519,8 +519,8 @@ namespace Fekra_DataAccessLayer.classes
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.Add(new SqlParameter("@key", SqlDbType.NVarChar, 100) { Value = session.Key });
-                        command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = session.UserId });
+                        command.Parameters.Add(new SqlParameter("@key", SqlDbType.NVarChar, 100) { Value = key });
+                        command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = userId });
 
                         SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);
                         returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -536,8 +536,8 @@ namespace Fekra_DataAccessLayer.classes
             {
                 string Params = cls_Errors_D.GetParams
                     (
-                        () => session.Key,
-                        () => session.UserId
+                        () => key,
+                        () => userId
                     );
 
                 await cls_Errors_D.LogErrorAsync(new md_NewError

@@ -12,16 +12,6 @@ namespace Fekra_BusinessLayer.services
 {
     public class cls_Sessions
     {
-        public static bool ValidateObj_NewMode(md_NewSession session)
-        {
-            if (session.UserId <= 0)
-                return false;
-
-            if (!Validation.CheckLength(1, 100, session.Key))
-                return false;
-
-            return true;
-        }
 
         // completed testing.
         public static async Task<List<md_Sessions>?> GetActiveSessionsAsync(int pageNumber)
@@ -84,12 +74,20 @@ namespace Fekra_BusinessLayer.services
         }
 
         // completed testing.
-        public static async Task<int> NewAsync(md_NewSession session)
+        public static async Task<string?> NewAsync(int userId)
         {
-            if (!ValidateObj_NewMode(session))
-                return -1;
+            if (userId <= 0)
+                return null;
 
-            return await cls_Sessions_D.NewAsync(session);
+            string _key = KeyProvider.GetPart(50, KeyProvider.EN_KeyType.NumbersLetters);
+
+            while (await IsSessionKeyExistAsync(_key))
+            {
+                _key = KeyProvider.GetPart(50, KeyProvider.EN_KeyType.NumbersLetters);
+            }
+
+            int insertedId = await cls_Sessions_D.NewAsync(userId, _key);
+            return insertedId > 0 ? _key : null;
         }
 
         // completed testing.

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fekra_ApiLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbe63197132bb3bea60a9e6ef38704bd5953a255")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+324c995d2b540e1367e0c2279d4d4adcc92e8331")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fekra_ApiLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fekra_ApiLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

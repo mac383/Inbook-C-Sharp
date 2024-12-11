@@ -13,6 +13,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins",
         builder => builder.WithOrigins("http://localhost:3000",
+                                       "https://test-383.netlify.app",
                                        "http://192.168.1.105:3000",
                                        "https://console.inbook.tech",
                                        "https://inbook.tech",

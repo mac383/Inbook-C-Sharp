@@ -459,23 +459,23 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpPost("NewSession", Name = "NewSession")]
+        [HttpPost("NewSession/{userId}", Name = "NewSession")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> NewSessionAsync([FromBody] md_NewSession session)
+        public async Task<ActionResult<ApiResponse>> NewSessionAsync([FromRoute] int userId)
         {
-            if (!cls_Sessions.ValidateObj_NewMode(session))
+            if (userId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid session data", new { }));
 
             try
             {
-                int insertedId = await cls_Sessions.NewAsync(session);
+                string? insertedKey = await cls_Sessions.NewAsync(userId);
 
-                if (insertedId <= 0)
-                    return BadRequest(new ApiResponse(false, "Session doesn't inserted successfully.", new { }));
+                if (string.IsNullOrEmpty(insertedKey))
+                    return BadRequest(new ApiResponse(false, "Session doesn't inserted successfully.", new { key = insertedKey }));
 
-                return Ok(new ApiResponse(true, "Session inserted successfully.", new {}));
+                return Ok(new ApiResponse(true, "Session inserted successfully.", new { key = insertedKey }));
             }
             catch
             {
@@ -486,7 +486,7 @@ namespace Fekra_ApiLayer.Controllers
                         (
                             false,
                             "An error occurred while processing your request.",
-                            new { }
+                            new { isCreated = false }
                         )
                     );
             }
