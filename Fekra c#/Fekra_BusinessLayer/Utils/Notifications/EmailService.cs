@@ -25,7 +25,7 @@ namespace Fekra_BusinessLayer.Utils.Notifications
                 var request = new RestRequest("/email/3/send", Method.Post);
 
                 // إضافة الرؤوس Headers
-                request.AddHeader("Authorization", "App 0c5e5e4561c2b60333693ed5b064b867-76df6686-5feb-4887-b44d-78911874087b");
+                request.AddHeader("Authorization", "App 12bc957878eeebe42b124d87a93cec6f-42c90db7-bd24-47a8-b903-299f9a752774");
                 request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("Accept", "application/json");
 
@@ -33,7 +33,7 @@ namespace Fekra_BusinessLayer.Utils.Notifications
                 request.AlwaysMultipartFormData = true;
 
                 // إضافة المعلمات Parameters
-                request.AddParameter("from", "Murtadha <murtadha_m383@hotmail.com>");
+                request.AddParameter("from", "Murtadha <inbook@usetit.io>");
                 request.AddParameter("subject", messageHeader);
                 request.AddParameter("to", to);
                 request.AddParameter("text", messageBody);

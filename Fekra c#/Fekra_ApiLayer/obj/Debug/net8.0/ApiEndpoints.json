@@ -4094,7 +4094,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.EncryptionController",
     "Method": "Decrypt",
-    "RelativePath": "api/Encryption/Decrypt/{cipher}",
+    "RelativePath": "api/Encryption/Decrypt",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -4102,7 +4102,7 @@
       {
         "Name": "cipher",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -4134,7 +4134,7 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.EncryptionController",
     "Method": "Encrypt",
-    "RelativePath": "api/Encryption/Encrypt/{plainText}",
+    "RelativePath": "api/Encryption/Encrypt",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -4142,7 +4142,7 @@
       {
         "Name": "plainText",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -7098,14 +7098,14 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.SessionsController",
     "Method": "NewSessionAsync",
-    "RelativePath": "api/Sessions/NewSession",
+    "RelativePath": "api/Sessions/NewSession/{userId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "session",
-        "Type": "Fekra_DataAccessLayer.models.Sessions.md_NewSession",
+        "Name": "userId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
