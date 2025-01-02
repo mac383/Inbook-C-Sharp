@@ -310,6 +310,7 @@ namespace Fekra_DataAccessLayer.classes
                         command.Parameters.Add(new SqlParameter("@description", SqlDbType.NVarChar, 250) { Value = payment.Description ?? (object)DBNull.Value });
                         command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = payment.UserId });
                         command.Parameters.Add(new SqlParameter("@subscriptionId", SqlDbType.Int) { Value = payment.SubscriptionId });
+                        command.Parameters.Add(new SqlParameter("@byAdmin", SqlDbType.Int) { Value = payment.ByAdmin });
 
                         SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);
                         returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -330,7 +331,8 @@ namespace Fekra_DataAccessLayer.classes
                         () => payment.PaymentMethod,
                         () => payment.Description,
                         () => payment.UserId,
-                        () => payment.SubscriptionId
+                        () => payment.SubscriptionId,
+                        () => payment.ByAdmin
                     );
 
                 await cls_Errors_D.LogErrorAsync(new md_NewError

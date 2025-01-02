@@ -36,3 +36,16 @@ G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_Da
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\refint\Fekra_DataAccessLayer.dll
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.pdb
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\ref\Fekra_DataAccessLayer.dll
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.deps.json
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.dll
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\bin\Debug\net8.0\Fekra_DataAccessLayer.pdb
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.csproj.AssemblyReference.cache
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.AssemblyInfoInputs.cache
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.AssemblyInfo.cs
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.csproj.CoreCompileInputs.cache
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.sourcelink.json
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.dll
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\refint\Fekra_DataAccessLayer.dll
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\Fekra_DataAccessLayer.pdb
+G:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Debug\net8.0\ref\Fekra_DataAccessLayer.dll

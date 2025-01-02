@@ -89,7 +89,5 @@ namespace Fekra_BusinessLayer.Utils
                 }
             }
         }
-
-
     }
 }

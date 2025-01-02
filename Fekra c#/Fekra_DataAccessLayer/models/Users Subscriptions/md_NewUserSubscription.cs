@@ -12,11 +12,13 @@ namespace Fekra_DataAccessLayer.models.Users_Subscriptions
     {
         public int UserId { get; set; }
         public int PlanId { get; set; }
+        public int ByAdmin { get; set; }
 
-        public md_NewUserSubscription (int userId, int planId)
+        public md_NewUserSubscription (int userId, int planId, int byAdmin)
         {
             UserId = userId;
             PlanId = planId;
+            ByAdmin = byAdmin;
         }
     }
 }

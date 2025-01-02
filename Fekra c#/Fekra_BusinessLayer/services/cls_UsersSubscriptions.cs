@@ -20,6 +20,9 @@ namespace Fekra_BusinessLayer.services
             if (subscription.PlanId <= 0)
                 return false;
 
+            if (subscription.ByAdmin <= 0)
+                return false;
+
             return true;
         }
 

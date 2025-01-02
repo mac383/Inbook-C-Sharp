@@ -33,6 +33,9 @@ namespace Fekra_BusinessLayer.services
             if (payment.SubscriptionId <= 0)
                 return false;
 
+            if (payment.ByAdmin <= 0)
+                return false;
+
             return true;
         }
 

@@ -661,6 +661,7 @@ namespace Fekra_DataAccessLayer.classes
 
                         command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = subscription.UserId });
                         command.Parameters.Add(new SqlParameter("@planId", SqlDbType.Int) { Value = subscription.PlanId });
+                        command.Parameters.Add(new SqlParameter("@byAdmin", SqlDbType.Int) { Value = subscription.ByAdmin });
 
                         SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);
                         returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -677,7 +678,8 @@ namespace Fekra_DataAccessLayer.classes
                 string Params = cls_Errors_D.GetParams
                     (
                         () => subscription.UserId,
-                        () => subscription.PlanId
+                        () => subscription.PlanId,
+                        () => subscription.ByAdmin
                     );
 
                 await cls_Errors_D.LogErrorAsync(new md_NewError

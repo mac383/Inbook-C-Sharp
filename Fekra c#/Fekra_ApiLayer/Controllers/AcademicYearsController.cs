@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_DataAccessLayer.models.AcademicYears;
 using Fekra_DataAccessLayer.models.Branches;
@@ -12,6 +13,7 @@ namespace Fekra_ApiLayer.Controllers
     public class AcademicYearsController : ControllerBase
     {
         // completed testing.
+        [Auth]
         [HttpGet("GetAcademicYearsCount", Name = "GetAcademicYearsCount")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

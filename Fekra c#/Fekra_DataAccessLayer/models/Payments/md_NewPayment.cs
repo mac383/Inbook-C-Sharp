@@ -14,11 +14,12 @@ namespace Fekra_DataAccessLayer.models.Payments
         public string? Description { get; set; }
         public int UserId { get; set; }
         public int SubscriptionId { get; set; }
+        public int ByAdmin { get; set; }
 
         public md_NewPayment
             (
                 double amount, string currency, string paymentMethod,
-                string? description, int userId, int subscriptionId
+                string? description, int userId, int subscriptionId, int byAdmin
             )
         {
             Amount = amount;
@@ -27,6 +28,7 @@ namespace Fekra_DataAccessLayer.models.Payments
             Description = description;
             UserId = userId;
             SubscriptionId = subscriptionId;
+            ByAdmin = byAdmin;
         }
     }
 }

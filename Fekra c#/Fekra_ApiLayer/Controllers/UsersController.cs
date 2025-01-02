@@ -5,6 +5,7 @@ using Fekra_DataAccessLayer.models.Admins;
 using Fekra_DataAccessLayer.models.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Fekra_ApiLayer.Controllers
 {
@@ -12,6 +13,58 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+
+        [HttpPost("RefreshToken")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public ActionResult<ApiResponse> RefreshToken()
+        {
+            // تحقق من وجود الـ Refresh Token في الهيدر
+            if (!Request.Headers.ContainsKey("Authorization"))
+            {
+                return Unauthorized(new ApiResponse(false, "Refresh token is missing.", new { }));
+            }
+
+            string refreshToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", "").Trim();
+
+            try
+            {
+                cls_JwtAuth _jwtAuth = new cls_JwtAuth();
+
+                // فك التشفير والتحقق من صحة الـ Refresh Token
+                bool isValid = _jwtAuth.ValidateRefreshToken(refreshToken);
+
+                if (!isValid)
+                {
+                    return Unauthorized(new ApiResponse(false, "Invalid or expired refresh token.", new { }));
+                }
+
+                // استخراج الـ userId من الـ Refresh Token
+                string userId = _jwtAuth.ExtractUserIdFromRefreshToken(refreshToken);
+
+                // توليد Access Token جديد
+                string newAccessToken = _jwtAuth.GenerateAccessToken(userId);
+
+                return Ok
+                (
+                    new ApiResponse
+                    (
+                        true,
+                        "Access token refreshed successfully.",
+                        new
+                        {
+                            AccessToken = newAccessToken
+                        }
+                    )
+                );
+            }
+            catch
+            {
+                return StatusCode(500, new ApiResponse(false, "An error occurred while processing your request.", new { }));
+            }
+        }
+
         // completed testing.
         [HttpGet("GetAllUsers/{pageNumber}", Name = "GetAllUsers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -75,25 +128,35 @@ namespace Fekra_ApiLayer.Controllers
 
             try
             {
+                // تشفير كلمة المرور
                 password = Encryption.HashEncrypt(password);
 
+                // جلب المستخدم بناءً على اسم المستخدم أو البريد الإلكتروني وكلمة المرور
                 md_UserAuth? user = await cls_Users.GetByAuthAsync(userNameOrEmail, password);
 
                 if (user == null)
                     return NotFound(new ApiResponse(true, "User not found.", new { }));
 
-                return Ok
+                cls_JwtAuth _jwtAuth = new cls_JwtAuth();
+
+                // توليد التوكنات
+                string accessToken = _jwtAuth.GenerateAccessToken(user.UserId.ToString()); // توليد Access Token
+                string refreshToken = _jwtAuth.GenerateRefreshToken(user.UserId.ToString()); // توليد Refresh Token
+
+                // إرجاع الاستجابة مع التوكنات
+                return Ok(
+                    new ApiResponse
                     (
-                        new ApiResponse
-                        (
-                            true,
-                            "Success",
-                            new
-                            {
-                                User = user
-                            }
-                        )
-                    );
+                        true,
+                        "Success",
+                        new
+                        {
+                            User = user,
+                            AccessToken = accessToken,
+                            RefreshToken = refreshToken
+                        }
+                    )
+                );
             }
             catch
             {
