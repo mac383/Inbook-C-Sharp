@@ -94,6 +94,18 @@ namespace Fekra_BusinessLayer.services
 
             DataTable? lessons = await cls_YoutubeDataApiService.GetPlaylistVideos(newSection.PlaylistURL);
 
+            string? coverURL = await cls_YoutubeDataApiService.GetPlaylistThumbnail(playlistId);
+
+            if (string.IsNullOrEmpty(coverURL))
+                return -1;
+
+            string coverName;
+
+            do
+            {
+                coverName = KeyProvider.GetKey(6, 2, KeyProvider.EN_KeyType.NumbersLetters);
+            } while (await IsCoverExistAsync(coverName));
+
             md_CompleteCourseSection section = new md_CompleteCourseSection
                 (
                     newSection.SectionName,
@@ -101,6 +113,8 @@ namespace Fekra_BusinessLayer.services
                     playlistId,
                     newSection.CourseId,
                     lessons,
+                    coverURL,
+                    coverName,
                     newSection.ByAdmin
                 );
 

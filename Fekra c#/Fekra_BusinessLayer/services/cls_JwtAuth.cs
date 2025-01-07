@@ -15,7 +15,7 @@ namespace Fekra_BusinessLayer.services
         private readonly string _issuer = "inbook-backend-authentication-key-2025@#%$*&!(xyzINBOOK12345)";
         private readonly string _audience = "inbook-users-platform-secure-2025$%#@!^&*(abcDEF67890)";
         private readonly string _secretKey = "(InBook2o25*SmartAI@EduPlatform)"; // استخدم سر قوي للتشفير
-        private readonly TimeSpan _accessTokenExpiration = TimeSpan.FromHours(1);  // صلاحية Access Token
+        private readonly TimeSpan _accessTokenExpiration = TimeSpan.FromHours(3);  // صلاحية Access Token
         private readonly TimeSpan _refreshTokenExpiration = TimeSpan.FromDays(1);  // صلاحية Refresh Token
 
         private string GenerateSignature(string payload)

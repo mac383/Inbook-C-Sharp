@@ -701,6 +701,60 @@ namespace Fekra_DataAccessLayer.classes
         }
 
         // completed testing.
+        public static async Task<int> NewByUserAsync(md_NewByUser subscription)
+        {
+            int insertedId = 0;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"[dbo].[UsersSubscriptions_SP_NewByUser]";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = subscription.UserId });
+                        command.Parameters.Add(new SqlParameter("@planId", SqlDbType.Int) { Value = subscription.PlanId });
+
+                        SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
+
+                        insertedId = (int)returnParameter.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => subscription.UserId,
+                        () => subscription.PlanId
+                    );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_UsersSubscriptions_D",
+                        "NewByUserAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        Params
+                    ));
+
+                return -1;
+            }
+
+            return insertedId;
+        }
+
+        // completed testing.
         public static async Task<(int TotalSubscriptions, int TotalSubscriptionsThisMonth)> GetUsersSubscriptionsAnalyticsAsync()
         {
             int totalSubscriptions = 0;

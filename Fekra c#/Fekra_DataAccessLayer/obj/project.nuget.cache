@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WhSDXuXwxcgZBKhsekdtYAeSTtNyi7jATlYWIyhDsqg7VQSvwMrTMlqlsqIPYML3QRay5ohMtKTwWHW3WeM06w==",
+  "dgSpecHash": "j1LSBtE/PUjzVd6RWTK6U/YLu71l15/d5gmvhKzm9Z8fadM1316/3xoP35Rd/3mzMm8cwlmDwAS+1AA35Z6XqQ==",
   "success": true,
-  "projectFilePath": "G:\\Fekra-C-Sharp\\Fekra c#\\Fekra_DataAccessLayer\\Fekra_DataAccessLayer.csproj",
+  "projectFilePath": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_DataAccessLayer\\Fekra_DataAccessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\2021\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

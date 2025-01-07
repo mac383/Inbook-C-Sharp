@@ -123,5 +123,25 @@ namespace Fekra_BusinessLayer.services
 
             return videoTable;
         }
+
+        // استخراج صورة قائمة التشغيل
+        public static async Task<string?> GetPlaylistThumbnail(string playlistId)
+        {
+
+            // استعلام API للحصول على بيانات قائمة التشغيل
+            string url = $"https://www.googleapis.com/youtube/v3/playlists?part=snippet&id={playlistId}&key={apiKey}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetStringAsync(url);
+                JObject jsonResponse = JObject.Parse(response);
+
+                // استخراج الصورة المصغرة من الـ JSON
+                var thumbnailUrl = jsonResponse["items"]?[0]?["snippet"]?["thumbnails"]?["high"]?["url"]?.ToString();
+
+                return thumbnailUrl; // إرجاع رابط الصورة المصغرة
+            }
+        }
+
     }
 }

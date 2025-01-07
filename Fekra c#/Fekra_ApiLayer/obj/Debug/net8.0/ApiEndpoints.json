@@ -11007,6 +11007,46 @@
     ]
   },
   {
+    "ContainingType": "Fekra_ApiLayer.Controllers.UsersSubscriptionsController",
+    "Method": "NewUserSubscriptionByUserAsync",
+    "RelativePath": "api/UsersSubscriptions/NewUserSubscriptionByUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subscription",
+        "Type": "Fekra_DataAccessLayer.models.Users_Subscriptions.md_NewByUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
     "ContainingType": "Fekra_ApiLayer.Controllers.ValidationController",
     "Method": "CheckEmail",
     "RelativePath": "api/Validation/CheckEmail",

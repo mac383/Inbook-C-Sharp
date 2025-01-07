@@ -1,7 +1,9 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_BusinessLayer.Utils;
 using Fekra_DataAccessLayer.models.Admins;
+using Fekra_DataAccessLayer.models.Users;
 using Fekra_DataAccessLayer.models.Users_Subscriptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -536,6 +538,58 @@ namespace Fekra_ApiLayer.Controllers
             try
             {
                 int insertedId = await cls_UsersSubscriptions.NewAsync(subscription);
+
+                if (insertedId <= 0)
+                    return BadRequest(new ApiResponse(false, "User subscription doesn't inserted successfully.", new { }));
+
+                return CreatedAtRoute
+                    (
+                        "GetSubscriptionById",
+                        new
+                        {
+                            subscriptionId = insertedId
+                        },
+                        new ApiResponse
+                        (
+                            true,
+                            "User subscription inserted successfully.",
+                            new
+                            {
+                                Subscription = await cls_UsersSubscriptions.GetSubscriptionByIdAsync(insertedId)
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
+
+        // completed testing.
+        [HttpPost("NewUserSubscriptionByUser", Name = "NewUserSubscriptionByUser")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> NewUserSubscriptionByUserAsync([FromBody] md_NewByUser subscription)
+        {
+            if (!cls_UsersSubscriptions.ValidateObj_NewMode(subscription))
+                return BadRequest(new ApiResponse(false, "Invalid subscription data", new { }));
+
+            try
+            {
+
+                int insertedId = await cls_UsersSubscriptions.NewByUserAsync(subscription);
 
                 if (insertedId <= 0)
                     return BadRequest(new ApiResponse(false, "User subscription doesn't inserted successfully.", new { }));

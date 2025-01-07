@@ -26,6 +26,17 @@ namespace Fekra_BusinessLayer.services
             return true;
         }
 
+        public static bool ValidateObj_NewMode(md_NewByUser subscription)
+        {
+            if (subscription.UserId <= 0)
+                return false;
+
+            if (subscription.PlanId <= 0)
+                return false;
+
+            return true;
+        }
+
         // completed testing.
         public static async Task<int> GetActivesCount()
         {
@@ -105,6 +116,15 @@ namespace Fekra_BusinessLayer.services
                 return -1;
 
             return await cls_UsersSubscriptions_D.NewAsync(subscription);
+        }
+
+        // completed testing.
+        public static async Task<int> NewByUserAsync(md_NewByUser subscription)
+        {
+            if (!ValidateObj_NewMode(subscription))
+                return -1;
+
+            return await cls_UsersSubscriptions_D.NewByUserAsync(subscription);
         }
 
         // completed testing.

@@ -11,3 +11,16 @@ J:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAcc
 J:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\refint\Fekra_DataAccessLayer.dll
 J:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.pdb
 J:\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\ref\Fekra_DataAccessLayer.dll
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\bin\Release\net8.0\Fekra_DataAccessLayer.deps.json
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\bin\Release\net8.0\Fekra_DataAccessLayer.dll
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\bin\Release\net8.0\Fekra_DataAccessLayer.pdb
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.csproj.AssemblyReference.cache
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.AssemblyInfoInputs.cache
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.AssemblyInfo.cs
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.csproj.CoreCompileInputs.cache
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.sourcelink.json
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.dll
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\refint\Fekra_DataAccessLayer.dll
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\Fekra_DataAccessLayer.pdb
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_DataAccessLayer\obj\Release\net8.0\ref\Fekra_DataAccessLayer.dll

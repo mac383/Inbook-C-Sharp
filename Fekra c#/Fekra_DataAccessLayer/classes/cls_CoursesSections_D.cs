@@ -496,6 +496,8 @@ namespace Fekra_DataAccessLayer.classes
                         command.Parameters.Add(new SqlParameter("@playlistId", SqlDbType.NVarChar, 150) { Value = section.PlaylistId });
                         command.Parameters.Add(new SqlParameter("@courseId", SqlDbType.Int) { Value = section.CourseId });
                         command.Parameters.Add(new SqlParameter("@lessons", SqlDbType.Structured) { Value = section.Lessons ?? (object)DBNull.Value });
+                        command.Parameters.Add(new SqlParameter("@coverURL", SqlDbType.NVarChar) { Value = section.CoverURL });
+                        command.Parameters.Add(new SqlParameter("@coverName", SqlDbType.NVarChar, 150) { Value = section.CoverName });
                         command.Parameters.Add(new SqlParameter("@byAdmin", SqlDbType.Int) { Value = section.ByAdmin });
 
                         SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);
@@ -517,6 +519,8 @@ namespace Fekra_DataAccessLayer.classes
                         () => section.PlaylistId,
                         () => section.CourseId,
                         () => section.Lessons.Rows,
+                        () => section.CoverURL,
+                        () => section.CoverName,
                         () => section.ByAdmin
                     );
 
