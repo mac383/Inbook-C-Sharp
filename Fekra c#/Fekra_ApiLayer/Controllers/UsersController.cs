@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_BusinessLayer.Utils;
 using Fekra_DataAccessLayer.models.Admins;
@@ -113,26 +114,25 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetUserByAuth/{userNameOrEmail}/{password}", Name = "GetUserByAuth")]
+        [HttpPost("GetUserByAuth")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetUserByAuthAsync(string userNameOrEmail, string password)
+        public async Task<ActionResult<ApiResponse>> GetUserByAuthAsync([FromBody] md_AuthRequest request)
         {
-            if (string.IsNullOrEmpty(userNameOrEmail) || userNameOrEmail.Length > 150)
+            if (string.IsNullOrEmpty(request.UserNameOrEmail) || request.UserNameOrEmail.Length > 150)
                 return BadRequest(new ApiResponse(false, "Invalid username or email.", new { }));
 
-            if (string.IsNullOrEmpty(password) || password.Length > 150)
+            if (string.IsNullOrEmpty(request.Password) || request.Password.Length > 150)
                 return BadRequest(new ApiResponse(false, "Invalid password.", new { }));
 
             try
             {
-                // تشفير كلمة المرور
-                password = Encryption.HashEncrypt(password);
+                string hashedPassword = Encryption.HashEncrypt(request.Password);
 
-                // جلب المستخدم بناءً على اسم المستخدم أو البريد الإلكتروني وكلمة المرور
-                md_UserAuth? user = await cls_Users.GetByAuthAsync(userNameOrEmail, password);
+                md_UserAuth? user = await cls_Users.GetByAuthAsync(request.UserNameOrEmail, hashedPassword);
+
 
                 if (user == null)
                     return NotFound(new ApiResponse(true, "User not found.", new { }));
@@ -569,6 +569,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("DeleteUserImage/{userId}", Name = "DeleteUserImage")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -669,6 +670,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("SetUserEmail/{userId}/{email}", Name = "SetUserEmail")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -722,6 +724,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("SetUserFullName/{userId}/{fullName}", Name = "SetUserFullName")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -775,6 +778,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("SetUserImage/{userId}/{imageURL}/{imageName}", Name = "SetUserImage")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -831,22 +835,22 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpPatch("SetUserPassword/{userId}/{password}", Name = "SetUserPassword")]
+        [HttpPost("SetUserPassword", Name = "SetUserPassword")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SetUserPasswordAsync([FromRoute] int userId, [FromRoute] string password)
+        public async Task<ActionResult<ApiResponse>> SetUserPasswordAsync([FromBody] md_ResetPassword request)
         {
 
-            if (userId <= 0)
+            if (request.UserId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid user ID.", new { }));
 
-            if (!Validation.IsPasswordValid(password))
+            if (!Validation.IsPasswordValid(request.Password))
                 return BadRequest(new ApiResponse(false, "Invalid password.", new { }));
 
             try
             {
-                bool response = await cls_Users.SetPasswordAsync(userId, password);
+                bool response = await cls_Users.SetPasswordAsync(request.UserId, request.Password);
                 if (response)
                     return Ok
                         (
@@ -884,6 +888,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("SetUserUserName/{userId}/{userName}", Name = "SetUserUserName")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

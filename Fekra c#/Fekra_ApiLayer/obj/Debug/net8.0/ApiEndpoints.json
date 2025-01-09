@@ -4735,8 +4735,8 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.EncryptionController",
     "Method": "HashSHAAsync",
-    "RelativePath": "api/Encryption/HashSHA/{plainText}",
-    "HttpMethod": "GET",
+    "RelativePath": "api/Encryption/HashSHA",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -9781,19 +9781,14 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.UsersController",
     "Method": "GetUserByAuthAsync",
-    "RelativePath": "api/Users/GetUserByAuth/{userNameOrEmail}/{password}",
-    "HttpMethod": "GET",
+    "RelativePath": "api/Users/GetUserByAuth",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userNameOrEmail",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "password",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "Fekra_DataAccessLayer.models.Users.md_AuthRequest",
         "IsRequired": true
       }
     ],
@@ -11038,6 +11033,15 @@
           "text/json"
         ],
         "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       },
       {
         "Type": "System.Void",
