@@ -779,25 +779,25 @@ namespace Fekra_ApiLayer.Controllers
 
         // completed testing.
         [Auth]
-        [HttpPatch("SetUserImage/{userId}/{imageURL}/{imageName}", Name = "SetUserImage")]
+        [HttpPost("SetUserImage", Name = "SetUserImage")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SetUserImageAsync([FromRoute] int userId, [FromRoute] string imageURL, [FromRoute] string imageName)
+        public async Task<ActionResult<ApiResponse>> SetUserImageAsync([FromBody] md_setImage request)
         {
 
-            if (userId <= 0)
+            if (request.UserId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid user ID.", new { }));
 
-            if (string.IsNullOrEmpty(imageURL))
+            if (string.IsNullOrEmpty(request.ImageURL))
                 return BadRequest(new ApiResponse(false, "Invalid image URL.", new { }));
 
-            if (!Validation.CheckLength(1, 150, imageName))
+            if (!Validation.CheckLength(1, 150, request.ImageName))
                 return BadRequest(new ApiResponse(false, "Invalid image name.", new { }));
 
             try
             {
-                bool response = await cls_Users.SetImageAsync(userId, imageURL, imageName);
+                bool response = await cls_Users.SetImageAsync(request.UserId, request.ImageURL, request.ImageName);
                 if (response)
                     return Ok
                         (

@@ -1,3 +1,6 @@
+using Fekra_ApiLayer.Controllers;
+using Fekra_BusinessLayer.services;
+using Fekra_DataAccessLayer.models.firebase;
 using Fekra_DataAccessLayer.Utils;
 using Microsoft.OpenApi.Models;
 
@@ -5,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Initialize the database
 cls_database.Initialize(builder.Configuration);
+
+// configure firebase
+builder.Services.Configure<md_FirebaseConfig>(builder.Configuration.GetSection("Firebase"));
 
 // Add services to the container.
 builder.Services.AddControllers();
