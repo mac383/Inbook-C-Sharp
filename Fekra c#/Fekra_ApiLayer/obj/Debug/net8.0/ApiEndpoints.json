@@ -10398,24 +10398,14 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.UsersController",
     "Method": "SetUserImageAsync",
-    "RelativePath": "api/Users/SetUserImage/{userId}/{imageURL}/{imageName}",
-    "HttpMethod": "PATCH",
+    "RelativePath": "api/Users/SetUserImage",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "imageURL",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "imageName",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "Fekra_DataAccessLayer.models.Users.md_setImage",
         "IsRequired": true
       }
     ],

@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|g:\\inbook\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|g:\\inbook\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\coursessectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\coursessectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,22 +14,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
-              "ToolTip": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AQIAAOgBAAAAAAAAAAAAADoCAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T15:25:16.433Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -37,6 +23,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CoursesSectionsController.cs",
+              "DocumentMoniker": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\CoursesSectionsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CoursesSectionsController.cs",
+              "ToolTip": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\CoursesSectionsController.cs",
+              "RelativeToolTip": "Controllers\\CoursesSectionsController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T20:59:20.115Z",
+              "EditorCaption": ""
             }
           ]
         }

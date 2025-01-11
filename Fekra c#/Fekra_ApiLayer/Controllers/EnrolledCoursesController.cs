@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_DataAccessLayer.models.Admins;
 using Fekra_DataAccessLayer.models.Enrolled_Courses;
@@ -12,6 +13,7 @@ namespace Fekra_ApiLayer.Controllers
     public class EnrolledCoursesController : ControllerBase
     {
         //completed testing.
+        [Auth]
         [HttpGet("GetEnrolledCoursesByUser/{userId}", Name = "GetEnrolledCoursesByUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -59,6 +61,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
+        [Auth]
         [HttpGet("GetEnrolledCourseById/{enrolledCourseId}", Name = "GetEnrolledCourseById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -105,6 +108,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
+        [Auth]
         [HttpDelete("DeleteEnrolledCourse/{enrolledCourseId}", Name = "DeleteEnrolledCourse")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -198,6 +202,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
+        [Auth]
         [HttpPost("NewEnrolledCourse", Name = "NewEnrolledCourse")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
