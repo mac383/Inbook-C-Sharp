@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|g:\\inbook\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\coursessectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\coursessectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|g:\\inbook\\fekra-c-sharp\\fekra c#\\fekra_apilayer\\controllers\\lessonscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{926E136E-2FC5-46DE-938B-DAAF00E63966}|Fekra_ApiLayer.csproj|solutionrelative:controllers\\lessonscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CoursesSectionsController.cs",
-              "DocumentMoniker": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\CoursesSectionsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CoursesSectionsController.cs",
-              "ToolTip": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\CoursesSectionsController.cs",
-              "RelativeToolTip": "Controllers\\CoursesSectionsController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAABiAAAA",
+              "Title": "LessonsController.cs",
+              "DocumentMoniker": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\LessonsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LessonsController.cs",
+              "ToolTip": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Controllers\\LessonsController.cs",
+              "RelativeToolTip": "Controllers\\LessonsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-11T20:59:20.115Z",
+              "WhenOpened": "2025-01-12T12:34:59.172Z",
               "EditorCaption": ""
             }
           ]

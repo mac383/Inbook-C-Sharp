@@ -107,6 +107,52 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        //completed testing
+        [HttpGet("GetEnrolledCourseId/{userId}/{courseId}", Name = "GetEnrolledCourseId")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> GetEnrolledCourseIdAsync([FromRoute] int userId, [FromRoute] int courseId)
+        {
+            if (userId <= 0 || courseId <= 0)
+                return BadRequest(new ApiResponse(false, "Invalid user ID or course ID.", new { }));
+
+            try
+            {
+                int enrolledCourseId = await cls_EnrolledCourses.GetEnrolledCourseIdAsync(userId, courseId);
+
+                if (enrolledCourseId <= 0)
+                    return NotFound(new ApiResponse(true, "Enrolled course not found.", new { }));
+
+                return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            "Success",
+                            new
+                            {
+                                EnrolledCourseId = enrolledCourseId
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
+
         //completed testing.
         [Auth]
         [HttpDelete("DeleteEnrolledCourse/{enrolledCourseId}", Name = "DeleteEnrolledCourse")]

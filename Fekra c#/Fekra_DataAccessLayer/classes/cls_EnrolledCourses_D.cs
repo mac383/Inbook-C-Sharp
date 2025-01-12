@@ -261,6 +261,57 @@ namespace Fekra_DataAccessLayer.classes
             return isEnrolled;
         }
 
+        //completed testing
+        public static async Task<int> GetEnrolledCourseIdAsync(int userId, int courseId)
+        {
+            int enrolledCourseId = -1;
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"SELECT [dbo].[EnrolledCourses_FUN_GetEnrolledCourseId] (@userId, @courseId)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = userId });
+                        command.Parameters.Add(new SqlParameter("@courseId", SqlDbType.Int) { Value = courseId });
+
+                        await connection.OpenAsync();
+
+                        object? returnValue = await command.ExecuteScalarAsync();
+
+                        if (returnValue != null && returnValue != DBNull.Value)
+                            enrolledCourseId = Convert.ToInt32(returnValue);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => userId,
+                        () => courseId
+                    );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_EnrolledCourses_D",
+                        "getEnrolledCourseIdAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        Params
+                    ));
+
+                return -1;
+            }
+
+            return enrolledCourseId;
+        }
+
         //completed testing.
         public static async Task<int> NewAsync(md_NewEnrolledCourse course)
         {

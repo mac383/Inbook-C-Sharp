@@ -35,6 +35,12 @@ namespace Fekra_BusinessLayer.services
             return await cls_EnrolledCourses_D.GetByIdAsync(enrolledCourseId);
         }
 
+        //completed testing
+        public static async Task<int> GetEnrolledCourseIdAsync(int userId, int courseId)
+        {
+            return await cls_EnrolledCourses_D.GetEnrolledCourseIdAsync(userId, courseId);
+        }
+
         //completed testing.
         public static async Task<bool> DeleteAsync(int enrolledCourseId)
         {
