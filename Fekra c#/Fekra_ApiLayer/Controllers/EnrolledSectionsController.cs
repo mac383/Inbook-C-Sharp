@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_BusinessLayer.Utils;
 using Fekra_DataAccessLayer.models.Admins;
@@ -13,6 +14,7 @@ namespace Fekra_ApiLayer.Controllers
     public class EnrolledSectionsController : ControllerBase
     {
         //completed testing.
+        [Auth]
         [HttpGet("GetEnrolledSectionsByEnrolledCourse/{enrolledCourseId}", Name = "GetEnrolledSectionsByEnrolledCourse")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -60,6 +62,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
+        [Auth]
         [HttpGet("GetEnrolledSectionById/{enrolledSectionId}", Name = "GetEnrolledSectionById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -106,6 +109,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
+        [Auth]
         [HttpPatch("DeleteEnrolledSectionFile/{enrolledSectionId}", Name = "DeleteEnrolledSectionFile")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -237,6 +241,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
+        [Auth]
         [HttpPatch("SetEnrolledSectionAsStarted/{enrolledSectionId}", Name = "SetEnrolledSectionAsStarted")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -286,28 +291,29 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
-        [HttpPatch("SetEnrolledSectionFile/{enrolledSectionId}/{fileTitle}/{fileURL}/{fileName}", Name = "SetEnrolledSectionFile")]
+        [Auth]
+        [HttpPost("SetEnrolledSectionFile", Name = "SetEnrolledSectionFile")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SetEnrolledSectionFileAsync([FromRoute] int enrolledSectionId, [FromRoute] string fileTitle, [FromRoute] string fileURL, [FromRoute] string fileName)
+        public async Task<ActionResult<ApiResponse>> SetEnrolledSectionFileAsync([FromBody] md_newFile request)
         {
 
-            if (enrolledSectionId <= 0)
+            if (request.EnrolledSectionId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid enrolled section ID.", new { }));
 
-            if (string.IsNullOrEmpty(fileURL))
+            if (string.IsNullOrEmpty(request.FileURL))
                 return BadRequest(new ApiResponse(false, "Invalid file URL.", new { }));
 
-            if (!Validation.CheckLength(1, 150, fileName))
+            if (!Validation.CheckLength(1, 150, request.FileName))
                 return BadRequest(new ApiResponse(false, "Invalid file name.", new { }));
 
-            if (!Validation.CheckLength(1, 250, fileTitle))
+            if (!Validation.CheckLength(1, 250, request.FileTitle))
                 return BadRequest(new ApiResponse(false, "Invalid file title.", new { }));
 
             try
             {
-                bool response = await cls_EnrolledSections.SetFileAsync(enrolledSectionId, fileTitle, fileURL, fileName);
+                bool response = await cls_EnrolledSections.SetFileAsync(request.EnrolledSectionId, request.FileTitle, request.FileURL, request.FileName);
                 if (response)
                     return Ok
                         (
@@ -345,6 +351,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         //completed testing.
+        [Auth]
         [HttpPatch("SetEnrolledSectionFileTitle/{enrolledSectionId}/{fileTitle}", Name = "SetEnrolledSectionFileTitle")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

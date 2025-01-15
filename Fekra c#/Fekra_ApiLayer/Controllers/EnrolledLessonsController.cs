@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_BusinessLayer.Utils;
 using Fekra_DataAccessLayer.models.Enrolled_Lessons;
@@ -13,6 +14,7 @@ namespace Fekra_ApiLayer.Controllers
     public class EnrolledLessonsController : ControllerBase
     {
         // completed testing.
+        [Auth]
         [HttpGet("GetEnrolledLessonsByEnrolledSection/{enrolledSectionId}", Name = "GetEnrolledLessonsByEnrolledSection")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -60,12 +62,13 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpGet("GetEnrolledLessonById/{enrolledLessonId}", Name = "GetEnrolledLessonById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetEnrolledLessonByIdAsync(int enrolledLessonId)
+        public async Task<ActionResult<ApiResponse>> GetEnrolledLessonByIdAsync([FromRoute] int enrolledLessonId)
         {
             if (enrolledLessonId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid enrolled lesson ID.", new { }));
@@ -106,6 +109,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("DeleteEnrolledLessonFile/{enrolledLessonId}", Name = "DeleteEnrolledLessonFile")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -155,6 +159,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("DeleteEnrolledLessonNote/{enrolledLessonId}", Name = "DeleteEnrolledLessonNote")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -245,6 +250,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("SetEnrolledLessonAsCompleted/{enrolledLessonId}", Name = "SetEnrolledLessonAsCompleted")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -294,28 +300,29 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpPatch("SetEnrolledLessonFile/{enrolledLessonId}/{fileTitle}/{fileURL}/{fileName}", Name = "SetEnrolledLessonFile")]
+        [Auth]
+        [HttpPost("SetEnrolledLessonFile", Name = "SetEnrolledLessonFile")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SetEnrolledLessonFileAsync([FromRoute] int enrolledLessonId, [FromRoute] string fileTitle, [FromRoute] string fileURL, [FromRoute] string fileName)
+        public async Task<ActionResult<ApiResponse>> SetEnrolledLessonFileAsync([FromBody] md_newLessonFile request)
         {
 
-            if (enrolledLessonId <= 0)
+            if (request.EnrolledLessonId <= 0)
                 return BadRequest(new ApiResponse(false, "Invalid enrolled lesson ID.", new { }));
 
-            if (string.IsNullOrEmpty(fileURL))
+            if (string.IsNullOrEmpty(request.FileURL))
                 return BadRequest(new ApiResponse(false, "Invalid file URL.", new { }));
 
-            if (!Validation.CheckLength(1, 150, fileName))
+            if (!Validation.CheckLength(1, 150, request.FileName))
                 return BadRequest(new ApiResponse(false, "Invalid file name.", new { }));
 
-            if (!Validation.CheckLength(1, 250, fileTitle))
+            if (!Validation.CheckLength(1, 250, request.FileTitle))
                 return BadRequest(new ApiResponse(false, "Invalid file title.", new { }));
 
             try
             {
-                bool response = await cls_EnrolledLessons.SetFileAsync(enrolledLessonId, fileTitle, fileURL, fileName);
+                bool response = await cls_EnrolledLessons.SetFileAsync(request.EnrolledLessonId, request.FileTitle, request.FileURL, request.FileName);
                 if (response)
                     return Ok
                         (
@@ -353,6 +360,7 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [Auth]
         [HttpPatch("SetEnrolledLessonNote/{enrolledLessonId}/{note}", Name = "SetEnrolledLessonNote")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
