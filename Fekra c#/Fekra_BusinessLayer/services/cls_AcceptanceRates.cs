@@ -101,6 +101,12 @@ namespace Fekra_BusinessLayer.services
         }
 
         // completed testing.
+        public static async Task<List<md_AcceptanceRates>?> GetByAverageAsync(decimal average)
+        {
+            return await cls_AcceptanceRates_D.GetByAverageAsync(average);
+        }
+
+        // completed testing.
         public static async Task<md_AcceptanceRates?> GetByIdAsync(int rateId)
         {
             return await cls_AcceptanceRates_D.GetByIdAsync(rateId);

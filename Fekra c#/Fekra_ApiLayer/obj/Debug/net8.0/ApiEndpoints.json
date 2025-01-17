@@ -408,6 +408,55 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.AcceptanceRatesController",
+    "Method": "GetAcceptanceRatesByAverageAsync",
+    "RelativePath": "api/AcceptanceRates/GetAcceptanceRatesByAverage/{average}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "average",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.AcceptanceRatesController",
     "Method": "GetAcceptanceRatesByBranchAsync",
     "RelativePath": "api/AcceptanceRates/GetAcceptanceRatesByBranch/{branchId}/{pageNumber}",
     "HttpMethod": "GET",
@@ -5310,29 +5359,14 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledLessonsController",
     "Method": "SetEnrolledLessonFileAsync",
-    "RelativePath": "api/EnrolledLessons/SetEnrolledLessonFile/{enrolledLessonId}/{fileTitle}/{fileURL}/{fileName}",
-    "HttpMethod": "PATCH",
+    "RelativePath": "api/EnrolledLessons/SetEnrolledLessonFile",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "enrolledLessonId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "fileTitle",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "fileURL",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "fileName",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "Fekra_DataAccessLayer.models.Enrolled_Lessons.md_newLessonFile",
         "IsRequired": true
       }
     ],
@@ -5668,29 +5702,14 @@
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.EnrolledSectionsController",
     "Method": "SetEnrolledSectionFileAsync",
-    "RelativePath": "api/EnrolledSections/SetEnrolledSectionFile/{enrolledSectionId}/{fileTitle}/{fileURL}/{fileName}",
-    "HttpMethod": "PATCH",
+    "RelativePath": "api/EnrolledSections/SetEnrolledSectionFile",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "enrolledSectionId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "fileTitle",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "fileURL",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "fileName",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "Fekra_DataAccessLayer.models.Enrolled_Sections.md_newFile",
         "IsRequired": true
       }
     ],

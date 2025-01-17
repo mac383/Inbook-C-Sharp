@@ -226,6 +226,74 @@ namespace Fekra_DataAccessLayer.classes
         }
 
         // completed testing.
+        public static async Task<List<md_AcceptanceRates>?> GetByAverageAsync(decimal average)
+        {
+            List<md_AcceptanceRates> rates = new List<md_AcceptanceRates>();
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"SELECT * FROM [dbo].[AcceptanceRates_FUN_GetByAverage] (@average)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@average", SqlDbType.Decimal) { Value = average });
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                rates.Add
+                                    (
+                                        new md_AcceptanceRates
+                                        (
+                                            reader.GetInt32(reader.GetOrdinal("RateId")),
+                                            reader.GetString(reader.GetOrdinal("College")),
+                                            Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("Total"))),
+                                            Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("Average"))),
+                                            reader.GetString(reader.GetOrdinal("Gender")),
+
+                                            reader.IsDBNull(reader.GetOrdinal("Description")) ?
+                                            null : reader.GetString(reader.GetOrdinal("Description")),
+
+                                            reader.GetString(reader.GetOrdinal("BranchName")),
+                                            reader.GetString(reader.GetOrdinal("AcademicYear"))
+                                        )
+                                    );
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => average
+                    );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_AcceptanceRates_D",
+                        "GetByAverageAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        Params
+                    ));
+
+                return null;
+            }
+
+            return rates.Count > 0 ? rates : null;
+        }
+
+        // completed testing.
         public static async Task<md_AcceptanceRates?> GetByIdAsync(int rateId)
         {
             md_AcceptanceRates? rate = null;

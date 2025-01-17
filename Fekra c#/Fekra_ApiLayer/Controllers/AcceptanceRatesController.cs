@@ -194,9 +194,56 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
-        [HttpGet("GetAcceptanceRateById/{rateId}", Name = "GetAcceptanceRateById")]
+        [HttpGet("GetAcceptanceRatesByAverage/{average}", Name = "GetAcceptanceRatesByAverage")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> GetAcceptanceRatesByAverageAsync(decimal average)
+        {
+            if (average <= 0)
+                return BadRequest(new ApiResponse(false, "Invalid average.", new { }));
+
+            try
+            {
+                List<md_AcceptanceRates>? rates = await cls_AcceptanceRates.GetByAverageAsync(average);
+
+                if (rates == null)
+                    return NotFound(new ApiResponse(true, "Not acceptance rates found.", new { }));
+
+                return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            "Success",
+                            new
+                            {
+                                AcceptanceRates = rates,
+                                count = rates.Count
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
+
+        // completed testing.
+        [HttpGet("GetAcceptanceRateById/{rateId}", Name = "GetAcceptanceRateById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]    
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<ApiResponse>> GetAcceptanceRateByIdAsync(int rateId)
