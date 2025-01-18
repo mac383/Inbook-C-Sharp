@@ -1,5 +1,7 @@
 using Fekra_ApiLayer.Controllers;
 using Fekra_BusinessLayer.services;
+using Fekra_BusinessLayer.services.chatGPT;
+using Fekra_DataAccessLayer.models.chatGPT;
 using Fekra_DataAccessLayer.models.firebase;
 using Fekra_DataAccessLayer.Utils;
 using Microsoft.OpenApi.Models;
@@ -11,6 +13,12 @@ cls_database.Initialize(builder.Configuration);
 
 // configure firebase
 builder.Services.Configure<md_FirebaseConfig>(builder.Configuration.GetSection("Firebase"));
+
+// إضافة IHttpClientFactory
+builder.Services.AddHttpClient();
+
+// configure chat-gpt
+builder.Services.Configure<md_ChatGptConfig>(builder.Configuration.GetSection("chat-3.5-turbo"));
 
 // Add services to the container.
 builder.Services.AddControllers();
