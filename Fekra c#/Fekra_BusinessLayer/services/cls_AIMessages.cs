@@ -17,21 +17,24 @@ namespace Fekra_BusinessLayer.services
             if (message.ConversationId <= 0)
                 return false;
 
-            if (message.Sender.Length <= 0)
+            if (message.Request.Length <= 0)
                 return false;
 
-            if (message.Content.Length <= 0)
+            if (message.Response.Length <= 0)
+                return false;
+
+            if (message.Summary.Length <= 0)
                 return false;
 
             return true;
         }
 
-        public static async Task<bool> AddMessageAsync(md_NewMessage newMessage)
+        public static async Task<bool> HandleMessageAsync(md_NewMessage newMessage)
         {
             if (!ValidateObj_NewMode(newMessage))
                 return false;
 
-            return await cls_AIMessages_D.AddMessageAsync(newMessage);
+            return await cls_AIMessages_D.HandleMessageAsync(newMessage);
         }
 
         public static async Task<List<md_Messages>?> GetMessagesByConversationAsync(int conversationId)

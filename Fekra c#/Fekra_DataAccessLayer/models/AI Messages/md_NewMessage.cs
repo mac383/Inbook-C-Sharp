@@ -9,14 +9,16 @@ namespace Fekra_DataAccessLayer.models.AI_Messages
     public class md_NewMessage
     {
         public int ConversationId { get; set; }
-        public string Sender { get; set; }
-        public string Content { get; set; }
+        public string Request { get; set; }
+        public string Response { get; set; }
+        public string Summary { get; set; }
 
-        public md_NewMessage(int conversationId, string sender, string content)
+        public md_NewMessage(int conversationId, string request, string response, string summary)
         {
             ConversationId = conversationId;
-            Sender = sender;
-            Content = content;
+            Request = request;
+            Response = response;
+            Summary = summary;
         }
     }
 }

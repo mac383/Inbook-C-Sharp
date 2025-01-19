@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Text;
 using System.Net.Http;
+using Fekra_BusinessLayer.services;
+using Fekra_DataAccessLayer.models.AI_Messages;
+using Fekra_DataAccessLayer.classes;
+using Fekra_DataAccessLayer.models.Errors;
 
 namespace Fekra_ApiLayer.Controllers
 {
@@ -25,31 +29,53 @@ namespace Fekra_ApiLayer.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> GetResponseFromGPT([FromBody] string userInput)
+        public async Task<ActionResult<ApiResponse>> GetResponseFromGPTAsync([FromBody] md_ChatGptRequest request)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(userInput))
-                {
-                    return BadRequest(new ApiResponse(false, "المدخلات غير صالحة", null));
-                }
+                if (request == null || string.IsNullOrWhiteSpace(request.UserInput))
+                    return BadRequest(new ApiResponse(false, "المدخلات غير صالحة. UserInput مطلوب.", null));
 
-                // استدعاء الدالة من GptService
-                var gptResponse = await _gptService.GetResponseFromGptAsync(userInput);
+                //string currentSummary = await cls_AIConversations.GetConversationSummaryAsync(request.ConversationId);
+                string gptResponse = await _gptService.GetResponseFromGptAsync(request, "");
 
                 if (string.IsNullOrEmpty(gptResponse))
-                {
-                    return StatusCode(500, new ApiResponse(false, "لم يتمكن النظام من استخراج الإجابة.", null));
-                }
+                    return StatusCode(500, new ApiResponse(false, "حدث خطأ أثناء معالجة الطلب.", new { success = false }));
 
-                return Ok(new ApiResponse(true, "تم الحصول على إجابة من GPT", new { response = gptResponse }));
+                _ = Task.Run(async () =>
+                {
+                    //string newSummary = await _gptService.GenerateSummaryAsync(currentSummary, request.UserInput, gptResponse);
+                    await cls_AIMessages.HandleMessageAsync(new md_NewMessage(request.ConversationId, request.UserInput, gptResponse, "لا يتم تعيين ملخص حالياً."));
+                });
+
+                return Ok(new ApiResponse(true, "تم الحصول على إجابة من ظفر.", new { response = gptResponse }));
             }
             catch (Exception ex)
             {
+                string Params = cls_Errors_D.GetParams
+                (
+                    () => request.ConversationId,
+                    () => request.UserInput,
+                    () => request.UserFullName,
+                    () => request.MemoryData,
+                    () => request.Topic,
+                    () => request.Branch
+                );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                (
+                    ex.Message,
+                    "API Layer",
+                    ex.Source ?? "null",
+                    "DhaferController",
+                    "GetResponseFromGPTAsync",
+                    ex.StackTrace ?? "null",
+                    null,
+                    Params
+                ));
+
                 return StatusCode(500, new ApiResponse(false, "حدث خطأ أثناء معالجة الطلب.", new { message = ex.Message }));
             }
         }
-
     }
-
 }

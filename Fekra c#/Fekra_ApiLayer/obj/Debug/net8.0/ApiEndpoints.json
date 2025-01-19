@@ -2711,46 +2711,6 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.AIMessagesController",
-    "Method": "AddMessageAsync",
-    "RelativePath": "api/AIMessages/AddMessage",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "newMessage",
-        "Type": "Fekra_DataAccessLayer.models.AI_Messages.md_NewMessage",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Fekra_ApiLayer.Common.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 500
-      }
-    ]
-  },
-  {
-    "ContainingType": "Fekra_ApiLayer.Controllers.AIMessagesController",
     "Method": "GetMessagesByConversationAsync",
     "RelativePath": "api/AIMessages/GetMessagesByConversation",
     "HttpMethod": "GET",
@@ -2790,6 +2750,46 @@
           "text/json"
         ],
         "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.AIMessagesController",
+    "Method": "HandleMessageAsync",
+    "RelativePath": "api/AIMessages/HandleMessage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newMessage",
+        "Type": "Fekra_DataAccessLayer.models.AI_Messages.md_NewMessage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       },
       {
         "Type": "System.Void",
@@ -4703,15 +4703,15 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.DhaferController",
-    "Method": "GetResponseFromGPT",
+    "Method": "GetResponseFromGPTAsync",
     "RelativePath": "api/Dhafer/GetResponseFromGPT",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userInput",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "Fekra_DataAccessLayer.models.chatGPT.md_ChatGptRequest",
         "IsRequired": true
       }
     ],

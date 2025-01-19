@@ -13,35 +13,43 @@ namespace Fekra_DataAccessLayer.classes
 {
     public class cls_AIMessages_D
     {
-        public static async Task<bool> AddMessageAsync(md_NewMessage newMessage)
+        public static async Task<bool> HandleMessageAsync(md_NewMessage newMessage)
         {
-            int insertedId = 0;
+            int returnValue = 0;
+
             try
             {
                 using (SqlConnection connection = cls_database.Connection())
                 {
-                    string procedureName = @"[dbo].[AIMessages_SP_AddMessage]";
+                    string procedureName = @"[dbo].[AIMessages_SP_HandleMessage]";
 
                     using (SqlCommand command = new SqlCommand(procedureName, connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.Add(new SqlParameter("@ConversationId", SqlDbType.Int) { Value = newMessage.ConversationId });
-                        command.Parameters.Add(new SqlParameter("@Sender", SqlDbType.NVarChar, 25) { Value = newMessage.Sender });
-                        command.Parameters.Add(new SqlParameter("@Content", SqlDbType.NVarChar) { Value = newMessage.Content });
+                        command.Parameters.Add(new SqlParameter("@Request", SqlDbType.NVarChar) { Value = newMessage.Request });
+                        command.Parameters.Add(new SqlParameter("@Response", SqlDbType.NVarChar) { Value = newMessage.Response });
+                        command.Parameters.Add(new SqlParameter("@Summary", SqlDbType.NVarChar) { Value = newMessage.Summary });
 
                         SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);
                         returnParameter.Direction = ParameterDirection.ReturnValue;
 
                         await connection.OpenAsync();
                         await command.ExecuteNonQueryAsync();
-                        insertedId = (int)returnParameter.Value;
+                        returnValue = (int)returnParameter.Value;
                     }
                 }
             }
             catch (Exception ex)
             {
-                string Params = cls_Errors_D.GetParams(() => newMessage.ConversationId, () => newMessage.Sender, () => newMessage.Content);
+                string Params = cls_Errors_D.GetParams
+                (
+                    () => newMessage.ConversationId,
+                    () => newMessage.Request,
+                    () => newMessage.Response,
+                    () => newMessage.Summary
+                );
 
                 await cls_Errors_D.LogErrorAsync(new md_NewError
                 (
@@ -49,7 +57,7 @@ namespace Fekra_DataAccessLayer.classes
                     "Data Access Layer",
                     ex.Source ?? "null",
                     "cls_AIMessages_D",
-                    "AddMessageAsync",
+                    "HandleMessageAsync",
                     ex.StackTrace ?? "null",
                     null,
                     Params
@@ -57,7 +65,8 @@ namespace Fekra_DataAccessLayer.classes
 
                 return false;
             }
-            return insertedId > 0;
+
+            return returnValue > 0;
         }
 
         public static async Task<List<md_Messages>?> GetMessagesByConversationAsync(int conversationId)

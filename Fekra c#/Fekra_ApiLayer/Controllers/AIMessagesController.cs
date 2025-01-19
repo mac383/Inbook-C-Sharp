@@ -12,18 +12,18 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class AIMessagesController : ControllerBase
     {
-        [HttpPost("AddMessage", Name = "AddMessage")]
+        [HttpPost("HandleMessage", Name = "HandleMessage")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> AddMessageAsync([FromBody] md_NewMessage newMessage)
+        public async Task<ActionResult<ApiResponse>> HandleMessageAsync([FromBody] md_NewMessage newMessage)
         {
             if (!cls_AIMessages.ValidateObj_NewMode(newMessage))
                 return BadRequest(new ApiResponse(false, "Invalid input data.", new { Success = false }));
 
             try
             {
-                bool success = await cls_AIMessages.AddMessageAsync(newMessage);
+                bool success = await cls_AIMessages.HandleMessageAsync(newMessage);
 
                 if (!success)
                     return StatusCode(500, new ApiResponse(false, "Failed to add the message.", new { Success = false }));
@@ -35,8 +35,9 @@ namespace Fekra_ApiLayer.Controllers
                 string Params = cls_Errors_D.GetParams
                     (
                         () => newMessage.ConversationId,
-                        () => newMessage.Sender,
-                        () => newMessage.Content
+                        () => newMessage.Request,
+                        () => newMessage.Response,
+                        () => newMessage.Summary
                     );
 
                 // تسجيل الخطأ
@@ -46,7 +47,7 @@ namespace Fekra_ApiLayer.Controllers
                     "API Layer",
                     ex.Source ?? "null",
                     "AIMessagesController",
-                    "AddMessageAsync",
+                    "HandleMessageAsync",
                     ex.StackTrace ?? "null",
                     null,
                     Params
