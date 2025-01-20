@@ -46,24 +46,3 @@ namespace Fekra_DataAccessLayer.models.chatGPT
     }
 
 }
-
-//const requestData = {
-//      userInput: "ما هي قوانين نيوتن؟",
-//      memoryData: "بيانات ذاكرة خاصة بالمستخدم",
-//      previousConversations:
-//[
-//        { request: "ما هو تعريف القوة؟", response: "القوة هي المؤثر الخارجي الذي يسبب تغيراً في حركة الجسم." },
-//        { request: "ما هو تعريف الكتلة؟", response: "الكتلة هي مقدار المادة في الجسم." }
-//      ],
-//      topic: "الفيزياء",
-//      branch: "الصف الخامس"
-//    };
-
-
-//const requestData = {
-//  userInput: "ما هي قوانين نيوتن؟",
-//  memoryData: "بيانات ذاكرة خاصة بالمستخدم",
-//  previousConversations: [], // مصفوفة فارغة لعدم وجود محادثات سابقة
-//  topic: "الفيزياء",
-//  branch: "الصف الخامس"
-//};

@@ -11,6 +11,7 @@ using Fekra_BusinessLayer.services;
 using Fekra_DataAccessLayer.models.AI_Messages;
 using Fekra_DataAccessLayer.classes;
 using Fekra_DataAccessLayer.models.Errors;
+using Fekra_ApiLayer.Common.JwtAuth;
 
 namespace Fekra_ApiLayer.Controllers
 {
@@ -25,6 +26,7 @@ namespace Fekra_ApiLayer.Controllers
             _gptService = new GptService(gptConfig.Value, httpClientFactory);
         }
 
+        [Auth]
         [HttpPost("GetResponseFromGPT", Name = "GetResponseFromGPT")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

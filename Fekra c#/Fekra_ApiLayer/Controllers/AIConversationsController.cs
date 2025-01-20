@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class AIConversationsController : ControllerBase
     {
+        [Auth]
         [HttpPost("AddNewConversation", Name = "AddNewConversation")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -33,11 +35,12 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpPut("UpdateConversationTitle", Name = "UpdateConversationTitle")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> UpdateConversationTitleAsync([FromHeader] int conversationId, [FromHeader] string title)
+        public async Task<ActionResult<ApiResponse>> UpdateConversationTitleAsync([FromHeader] int conversationId, [FromBody] string title)
         {
             if (!cls_AIConversations.ValidateObj_UpdateMode(conversationId, title))
                 return BadRequest(new ApiResponse(false, "Invalid input data.", new { Success = false }));
@@ -57,6 +60,7 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpGet("GetAllConversations", Name = "GetAllConversations")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -82,6 +86,7 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpDelete("DeleteConversation", Name = "DeleteConversation")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

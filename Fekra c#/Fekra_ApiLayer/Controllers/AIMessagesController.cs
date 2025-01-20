@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_DataAccessLayer.classes;
 using Fekra_DataAccessLayer.models.AI_Messages;
@@ -12,6 +13,7 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class AIMessagesController : ControllerBase
     {
+        [Auth]
         [HttpPost("HandleMessage", Name = "HandleMessage")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -57,6 +59,7 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpGet("GetMessagesByConversation", Name = "GetMessagesByConversation")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

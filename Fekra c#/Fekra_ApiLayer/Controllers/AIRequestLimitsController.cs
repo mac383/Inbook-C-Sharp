@@ -11,6 +11,7 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class AIRequestLimitsController : ControllerBase
     {
+        [Auth]
         [HttpGet("CheckIfLimitExists", Name = "CheckIfLimitExists")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -52,6 +53,7 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpPost("ResetLimit", Name = "ResetLimit")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -93,6 +95,7 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpPost("DecrementRemainingRequests", Name = "DecrementRemainingRequests")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -134,6 +137,7 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpGet("GetRemainingRequests", Name = "GetRemainingRequests")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

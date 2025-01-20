@@ -1,4 +1,5 @@
 ﻿using Fekra_ApiLayer.Common;
+using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_DataAccessLayer.classes;
 using Fekra_DataAccessLayer.models.AIUserMemory;
@@ -11,6 +12,7 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class AIUserMemoryController : ControllerBase
     {
+        [Auth]
         [HttpPost("UpdateUserMemory", Name = "UpdateUserMemory")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -35,6 +37,7 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
+        [Auth]
         [HttpGet("GetUserMemoryByUserId", Name = "GetUserMemoryByUserId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
