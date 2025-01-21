@@ -28,12 +28,13 @@ namespace Fekra_DataAccessLayer.classes
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add(new SqlParameter("@UserId", SqlDbType.Int) { Value = userId });
 
+                        SqlParameter returnParameter = command.Parameters.Add("returnValue", SqlDbType.Int);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
                         await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
 
-                        object? returnValue = await command.ExecuteNonQueryAsync();
-
-                        if (returnValue != null && returnValue != DBNull.Value)
-                            conversationId = Convert.ToInt32(returnValue);
+                        conversationId = (int)returnParameter.Value;
                     }
                 }
             }
@@ -262,6 +263,5 @@ namespace Fekra_DataAccessLayer.classes
 
             return summary ?? "";
         }
-
     }
 }
