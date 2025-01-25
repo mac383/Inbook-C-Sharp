@@ -10897,6 +10897,55 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.UsersSubscriptionsController",
+    "Method": "GetInActiveUserSubscriptionsByUserAsync",
+    "RelativePath": "api/UsersSubscriptions/GetInActiveUserSubscriptionsByUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.UsersSubscriptionsController",
     "Method": "GetSubscriptionByIdAsync",
     "RelativePath": "api/UsersSubscriptions/GetSubscriptionById/{subscriptionId}",
     "HttpMethod": "GET",

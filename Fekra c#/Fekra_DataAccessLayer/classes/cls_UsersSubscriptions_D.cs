@@ -428,6 +428,76 @@ namespace Fekra_DataAccessLayer.classes
         }
 
         // completed testing.
+        public static async Task<List<md_UserSubscription>?> GetInActiveSubscriptionsByUserAsync(int userId)
+        {
+            List<md_UserSubscription>? subscriptions = new List<md_UserSubscription>();
+
+            try
+            {
+                using (SqlConnection connection = cls_database.Connection())
+                {
+                    string query = @"SELECT * FROM [dbo].[UsersSubscriptions_FUN_GetInActiveSubscriptionsByUserId] (@userId)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@userId", SqlDbType.Int) { Value = userId });
+
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                subscriptions.Add
+                                (
+                                    new md_UserSubscription
+                                    (
+                                        reader.GetInt32(reader.GetOrdinal("SubscriptionId")),
+
+                                        reader.IsDBNull(reader.GetOrdinal("PaymentId")) ? null :
+                                        reader.GetInt32(reader.GetOrdinal("PaymentId")),
+
+                                        reader.GetString(reader.GetOrdinal("PlanName")),
+                                        Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("Price"))),
+                                        reader.GetByte(reader.GetOrdinal("Discount")),
+                                        Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("FinalPrice"))),
+                                        reader.GetDateTime(reader.GetOrdinal("SubscriptionStart")),
+                                        reader.GetDateTime(reader.GetOrdinal("SubscriptionEnd")),
+                                        reader.GetBoolean(reader.GetOrdinal("IsActive")),
+                                        reader.GetInt32(reader.GetOrdinal("UserId"))
+                                    )
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string Params = cls_Errors_D.GetParams
+                    (
+                        () => userId
+                    );
+
+                await cls_Errors_D.LogErrorAsync(new md_NewError
+                    (
+                        ex.Message,
+                        "Data Access Layer",
+                        string.IsNullOrEmpty(ex.Source) ? "null" : ex.Source,
+                        "cls_UsersSubscriptions_D",
+                        "GetInActiveSubscriptionsByUserAsync",
+                        string.IsNullOrEmpty(ex.StackTrace) ? "null" : ex.StackTrace,
+                        null,
+                        Params
+                    ));
+
+                return null;
+            }
+
+            return subscriptions.Count > 0 ? subscriptions : null;
+        }
+
+        // completed testing.
         public static async Task<md_UserSubscription?> GetSubscriptionByIdAsync(int subscriptionId)
         {
             md_UserSubscription? subscription = null;

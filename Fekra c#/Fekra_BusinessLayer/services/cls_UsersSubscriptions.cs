@@ -86,6 +86,12 @@ namespace Fekra_BusinessLayer.services
         }
 
         // completed testing.
+        public static async Task<List<md_UserSubscription>?> GetInActiveSubscriptionsByUserAsync(int userId)
+        {
+            return await cls_UsersSubscriptions_D.GetInActiveSubscriptionsByUserAsync(userId);
+        }
+
+        // completed testing.
         public static async Task<md_UserSubscription?> GetSubscriptionByIdAsync(int subscriptionId)
         {
             return await cls_UsersSubscriptions_D.GetSubscriptionByIdAsync(subscriptionId);

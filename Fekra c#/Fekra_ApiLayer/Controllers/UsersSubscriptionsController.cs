@@ -360,6 +360,52 @@ namespace Fekra_ApiLayer.Controllers
         }
 
         // completed testing.
+        [HttpGet("GetInActiveUserSubscriptionsByUser/{userId}", Name = "GetInActiveUserSubscriptionsByUser")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ApiResponse>> GetInActiveUserSubscriptionsByUserAsync(int userId)
+        {
+            if (userId <= 0)
+                return BadRequest(new ApiResponse(false, "Invalid user ID.", new { }));
+
+            try
+            {
+                List<md_UserSubscription>? subscriptions = await cls_UsersSubscriptions.GetInActiveSubscriptionsByUserAsync(userId);
+
+                if (subscriptions == null)
+                    return NotFound(new ApiResponse(true, "Subscriptions not found.", new { }));
+
+                return Ok
+                    (
+                        new ApiResponse
+                        (
+                            true,
+                            "Success",
+                            new
+                            {
+                                Subscriptions = subscriptions
+                            }
+                        )
+                    );
+            }
+            catch
+            {
+                return StatusCode
+                    (
+                        500,
+                        new ApiResponse
+                        (
+                            false,
+                            "An error occurred while processing your request.",
+                            new { }
+                        )
+                    );
+            }
+        }
+
+        // completed testing.
         [HttpGet("GetSubscriptionById/{subscriptionId}", Name = "GetSubscriptionById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
