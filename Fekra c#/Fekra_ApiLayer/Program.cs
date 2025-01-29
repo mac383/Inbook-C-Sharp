@@ -31,6 +31,7 @@ builder.Services.AddCors(options =>
                                        "https://test-383.netlify.app",
                                        "http://192.168.1.105:3000",
                                        "https://console.inbook.tech",
+                                       "https://dashboard.inbook.tech",
                                        "https://inbook.tech",
                                        "https://www.inbook.tech") // أضف المزيد من النطاقات هنا إذا لزم الأمر
                           .AllowAnyMethod()
