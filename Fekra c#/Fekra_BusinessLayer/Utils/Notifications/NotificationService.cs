@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Amazon.SimpleEmail.Model;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Fekra_BusinessLayer.Utils.Notifications
@@ -16,93 +15,140 @@ namespace Fekra_BusinessLayer.Utils.Notifications
             _Notification = notification;
         }
 
-        // completed testing.
-        public async Task<string?> SendEmailVerification(string to, string username, EN_MessageType messageType)
+        public async Task<string?> SendEmail(string to, string username, EN_MessageType messageType)
         {
             string verificationCode = KeyProvider.GetKey(6, 1, KeyProvider.EN_KeyType.Numbers);
 
             if (string.IsNullOrEmpty(verificationCode))
                 return null;
 
-            (string messageHeader, string messageBody) = (string.Empty, string.Empty);
+            string messageHeader = "";
+            string messageBody = "";
+            string greeting = "";
+            string message = "";
+            string additionalMessage = "";
 
             switch (messageType)
             {
                 case EN_MessageType.RegistrationConfirmation:
-                    (messageHeader, messageBody) = RegistrationConfirmationMessage(username, verificationCode);
+                    messageHeader = "تأكيد التسجيل";
+                    greeting = $"مرحبًا {username}!";
+                    message = $"شكرًا لتسجيلك في منصتنا. نحن سعداء بانضمامك إلينا! لتأكيد بريدك الإلكتروني وتفعيل حسابك، يرجى استخدام كود التفعيل التالي:";
+                    additionalMessage = "إذا لم تقم بتسجيل هذا الحساب، يمكنك تجاهل هذه الرسالة.";
                     break;
 
                 case EN_MessageType.PasswordResetConfirmation:
-                    (messageHeader, messageBody) = PasswordResetConfirmationMessage(username, verificationCode);
+                    messageHeader = "إعادة تعيين كلمة المرور";
+                    greeting = $"مرحبًا {username}!";
+                    message = $"تم طلب إعادة تعيين كلمة المرور. لتأكيد العملية، يرجى استخدام كود التفعيل التالي:";
+                    additionalMessage = "إذا لم تقم بطلب إعادة تعيين كلمة المرور، يمكنك تجاهل هذه الرسالة.";
                     break;
 
                 case EN_MessageType.EmailVerification:
-                    (messageHeader, messageBody) = EmailVerificationMessage(username, verificationCode);
+                    messageHeader = "تأكيد البريد الإلكتروني";
+                    greeting = $"مرحبًا {username}!";
+                    message = $"لتأكيد بريدك الإلكتروني، يرجى استخدام كود التفعيل التالي:";
+                    additionalMessage = "إذا لم تقم بتسجيل هذا الحساب، يمكنك تجاهل هذه الرسالة.";
                     break;
             }
-            
+
+            messageBody = GetEmailTemplate();
+            messageBody = messageBody.Replace("{greeting}", greeting)
+                   .Replace("{message}", message)
+                   .Replace("{verificationCode}", verificationCode)
+                   .Replace("{additionalMessage}", additionalMessage)
+                   .Replace("{emailSubject}", messageHeader);
+
             return await _Notification.SendEmailVerification(to, messageHeader, messageBody, verificationCode);
         }
 
-        // completed testing.
-        private (string, string) RegistrationConfirmationMessage(string username, string verificationCode)
+        private string GetEmailTemplate()
         {
-            string messageHeader = "تأكيد بريدك الإلكتروني";
-
-            string messageBody = $@"
-                ،{username} عزيزي
-
-                ![Fekra] شكرًا لتسجيلك في
-                .نحتاج إلى تأكيد بريدك الإلكتروني لضمان صحة معلوماتك
-                
-                .{verificationCode} :كود التحقق الخاص بك هو
-
-                .يمكنك تجاهل هذه الرسالة في حال لم تقم بطلبها
-
-                مع أطيب التحيات
-                [فريق الدعم أو الخدمة]";
-
-            return (messageHeader, messageBody);
+            string template = @"
+<!DOCTYPE html>
+<html lang='ar'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>inBook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: right; /* جعل النص من اليمين لليسار */
+            direction: rtl;  /* جعل اتجاه النص RTL */
+            background-color: #f4f4f4;
+            padding: 20px;
         }
-
-        // completed testing.
-        private (string, string) PasswordResetConfirmationMessage(string username, string verificationCode)
-        {
-            string messageHeader = "إعادة تعيين كلمة المرور";
-
-            string messageBody = $@"
-                ،{username} عزيزي
-
-                .[Fekra] لقد تم استلام طلب لإعادة تعيين كلمة المرور الخاصة بك على منصة
-                
-                .{verificationCode} :كود التحقق الخاص بك هو
-
-                .يمكنك تجاهل هذه الرسالة في حال لم تقم بطلبها
-
-                مع أطيب التحيات
-                [فريق الدعم أو الخدمة]";
-
-            return (messageHeader, messageBody);
+        .container {
+            max-width: 700px;
+            width: 90%;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            direction: rtl;
         }
-
-        // completed testing.
-        private (string, string) EmailVerificationMessage(string username, string verificationCode)
-        {
-            string messageHeader = "تأكيد تغيير البريد الإلكتروني";
-
-            string messageBody = $@"
-                ،{username} عزيزي
-
-                .[Fekra] تم طلب التحقق من البريد الإلكتروني الخاص بك لتحديث بريدك الإلكتروني على حسابك في منصة
-                
-                .{verificationCode} :كود التحقق الخاص بك هو
-
-                .يمكنك تجاهل هذه الرسالة في حال لم تقم بطلبها  
-
-                مع أطيب التحيات
-                [فريق الدعم أو الخدمة]";
-
-            return (messageHeader, messageBody);
+        h2 {
+            color: #333;
+            direction: rtl;
+        }
+        .message {
+            font-size: 16px;
+        }
+        .verification-code {
+            direction: rtl;
+            background: #4154f1; /* اللون الأساسي */
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .footer {
+            direction: rtl;
+            color: #777;
+            font-size: 14px;
+        }
+        .footer a {
+            direction: rtl;
+            color: #4154f1; /* اللون الأساسي */
+            text-decoration: none;
+        }
+        .header {
+            padding: 10px;
+            border-radius: 10px;
+            background: #4154f1;
+            color: white;
+            direction: ltr;
+        }
+        .header h1 {
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h1>inBook</h1>
+        </div>
+        <h2>{greeting}</h2>
+        <p class='message'>{message}</p>
+        <h3 class='verification-code'>{verificationCode}</h3>
+        <p>{additionalMessage}</p>
+        <p class='footer'>
+            إذا كنت بحاجة إلى مساعدة، يمكنك التواصل مع فريق الدعم عبر
+            <a href='mailto:support@inbook.tech'>support@inbook.tech</a>.<br>
+            مع أطيب التحيات
+        </p>
+    </div>
+</body>
+</html>";
+            return template;
         }
     }
 }

@@ -24,12 +24,12 @@ namespace Fekra_ApiLayer.Controllers
 
             if (!Validation.IsUsernameValid(username))
                 return BadRequest(new ApiResponse(false, "Invalid username.", new { }));
-
+             
             try
             {
                 NotificationService notification = new NotificationService(new EmailService());
                 
-                string? response = await notification.SendEmailVerification(to, username, NotificationService.EN_MessageType.RegistrationConfirmation);
+                string? response = await notification.SendEmail(to, username, NotificationService.EN_MessageType.RegistrationConfirmation);
 
                 if (response == null)
                     return StatusCode
@@ -88,7 +88,7 @@ namespace Fekra_ApiLayer.Controllers
             {
                 NotificationService notification = new NotificationService(new EmailService());
 
-                string? response = await notification.SendEmailVerification(to, username, NotificationService.EN_MessageType.PasswordResetConfirmation);
+                string? response = await notification.SendEmail(to, username, NotificationService.EN_MessageType.PasswordResetConfirmation);
 
                 if (response == null)
                     return StatusCode
@@ -147,7 +147,7 @@ namespace Fekra_ApiLayer.Controllers
             {
                 NotificationService notification = new NotificationService(new EmailService());
 
-                string? response = await notification.SendEmailVerification(to, username, NotificationService.EN_MessageType.EmailVerification);
+                string? response = await notification.SendEmail(to, username, NotificationService.EN_MessageType.EmailVerification);
 
                 if (response == null)
                     return StatusCode

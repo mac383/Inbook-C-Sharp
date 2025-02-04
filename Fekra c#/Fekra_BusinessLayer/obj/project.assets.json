@@ -2,6 +2,35 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "AWSSDK.Core/3.7.401.7": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AWSSDK.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "AWSSDK.SimpleEmail/3.7.402.30": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.401.7, 4.0.0)"
+        },
+        "compile": {
+          "lib/net8.0/AWSSDK.SimpleEmail.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.SimpleEmail.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Azure.Core/1.38.0": {
         "type": "package",
         "dependencies": {
@@ -867,6 +896,35 @@
       }
     },
     "net8.0/win-x86": {
+      "AWSSDK.Core/3.7.401.7": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AWSSDK.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "AWSSDK.SimpleEmail/3.7.402.30": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.401.7, 4.0.0)"
+        },
+        "compile": {
+          "lib/net8.0/AWSSDK.SimpleEmail.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.SimpleEmail.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Azure.Core/1.38.0": {
         "type": "package",
         "dependencies": {
@@ -1718,6 +1776,67 @@
     }
   },
   "libraries": {
+    "AWSSDK.Core/3.7.401.7": {
+      "sha512": "tANypQFaBNDEHWvDcAC9QZlLHGAwMEYoFwrYhNA/KNQt89ASijS38hSD+iBG4FuPLbhh0aI1isjmGKOoiwU+5g==",
+      "type": "package",
+      "path": "awssdk.core/3.7.401.7",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "awssdk.core.3.7.401.7.nupkg.sha512",
+        "awssdk.core.nuspec",
+        "images/AWSLogo.png",
+        "lib/net35/AWSSDK.Core.dll",
+        "lib/net35/AWSSDK.Core.pdb",
+        "lib/net35/AWSSDK.Core.xml",
+        "lib/net45/AWSSDK.Core.dll",
+        "lib/net45/AWSSDK.Core.pdb",
+        "lib/net45/AWSSDK.Core.xml",
+        "lib/net8.0/AWSSDK.Core.dll",
+        "lib/net8.0/AWSSDK.Core.pdb",
+        "lib/net8.0/AWSSDK.Core.xml",
+        "lib/netcoreapp3.1/AWSSDK.Core.dll",
+        "lib/netcoreapp3.1/AWSSDK.Core.pdb",
+        "lib/netcoreapp3.1/AWSSDK.Core.xml",
+        "lib/netstandard2.0/AWSSDK.Core.dll",
+        "lib/netstandard2.0/AWSSDK.Core.pdb",
+        "lib/netstandard2.0/AWSSDK.Core.xml",
+        "tools/account-management.ps1"
+      ]
+    },
+    "AWSSDK.SimpleEmail/3.7.402.30": {
+      "sha512": "Xa17WqBrWYAoxwN+ohdCrU6QmeJOE60lHZQS8/5wV6Q473kloafuz6D1RiEojA/S9cfNBYMdFVf4jyLo2T22Bw==",
+      "type": "package",
+      "path": "awssdk.simpleemail/3.7.402.30",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/AWSSDK.SimpleEmail.CodeAnalysis.dll",
+        "analyzers/dotnet/cs/SharedAnalysisCode.dll",
+        "awssdk.simpleemail.3.7.402.30.nupkg.sha512",
+        "awssdk.simpleemail.nuspec",
+        "images/AWSLogo.png",
+        "lib/net35/AWSSDK.SimpleEmail.dll",
+        "lib/net35/AWSSDK.SimpleEmail.pdb",
+        "lib/net35/AWSSDK.SimpleEmail.xml",
+        "lib/net45/AWSSDK.SimpleEmail.dll",
+        "lib/net45/AWSSDK.SimpleEmail.pdb",
+        "lib/net45/AWSSDK.SimpleEmail.xml",
+        "lib/net8.0/AWSSDK.SimpleEmail.dll",
+        "lib/net8.0/AWSSDK.SimpleEmail.pdb",
+        "lib/net8.0/AWSSDK.SimpleEmail.xml",
+        "lib/netcoreapp3.1/AWSSDK.SimpleEmail.dll",
+        "lib/netcoreapp3.1/AWSSDK.SimpleEmail.pdb",
+        "lib/netcoreapp3.1/AWSSDK.SimpleEmail.xml",
+        "lib/netstandard2.0/AWSSDK.SimpleEmail.dll",
+        "lib/netstandard2.0/AWSSDK.SimpleEmail.pdb",
+        "lib/netstandard2.0/AWSSDK.SimpleEmail.xml",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
     "Azure.Core/1.38.0": {
       "sha512": "IuEgCoVA0ef7E4pQtpC3+TkPbzaoQfa77HlfJDmfuaJUCVJmn7fT0izamZiryW5sYUFKizsftIxMkXKbgIcPMQ==",
       "type": "package",
@@ -3382,6 +3501,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "AWSSDK.SimpleEmail >= 3.7.402.30",
       "Fekra_DataAccessLayer >= 1.0.0",
       "Microsoft.Data.SqlClient >= 5.2.2",
       "Microsoft.Extensions.Configuration >= 8.0.0",
@@ -3445,6 +3565,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "AWSSDK.SimpleEmail": {
+            "target": "Package",
+            "version": "[3.7.402.30, )"
+          },
           "Microsoft.Data.SqlClient": {
             "target": "Package",
             "version": "[5.2.2, )"

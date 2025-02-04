@@ -136,3 +136,5 @@ G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\refin
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\Fekra_ApiLayer.pdb
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\Fekra_ApiLayer.genruntimeconfig.cache
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\ref\Fekra_ApiLayer.dll
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\bin\Release\net8.0\win-x86\AWSSDK.Core.dll
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\bin\Release\net8.0\win-x86\AWSSDK.SimpleEmail.dll

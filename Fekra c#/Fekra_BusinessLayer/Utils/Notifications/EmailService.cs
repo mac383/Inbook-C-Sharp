@@ -1,56 +1,53 @@
-﻿using Microsoft.Identity.Client;
+﻿using Amazon;
+using Amazon.SimpleEmail;
+using Amazon.SimpleEmail.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
-using RestSharp;
 
 namespace Fekra_BusinessLayer.Utils.Notifications
 {
     public class EmailService : INotification
     {
-        // completed testing.
-        public async Task<string?> SendEmailVerification(string to, string messageHeader, string messageBody, string VerificationKey)
+        private readonly string _sourceEmail = "info@inbook.tech";
+        private readonly RegionEndpoint _awsRegion = RegionEndpoint.EUNorth1;
+        private readonly string _accessKey = "AKIA2MNVMGKAFWMXYKPP";
+        private readonly string _secretKey = "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";
+
+        public async Task<string?> SendEmailVerification(string to, string messageHeader, string messageBody, string verificationKey)
         {
             try
             {
-                var options = new RestClientOptions("https://1v4gpn.api.infobip.com")
+                var clientConfig = new AmazonSimpleEmailServiceConfig
                 {
-                    ThrowOnAnyError = true
+                    RegionEndpoint = _awsRegion
                 };
-                var client = new RestClient(options);
 
-                // إعداد طلب POST
-                var request = new RestRequest("/email/3/send", Method.Post);
+                var client = new AmazonSimpleEmailServiceClient(_accessKey, _secretKey, clientConfig);
 
-                // إضافة الرؤوس Headers
-                request.AddHeader("Authorization", "App 12bc957878eeebe42b124d87a93cec6f-42c90db7-bd24-47a8-b903-299f9a752774");
-                request.AddHeader("Content-Type", "multipart/form-data");
-                request.AddHeader("Accept", "application/json");
+                var sendRequest = new SendEmailRequest
+                {
+                    Source = _sourceEmail,
+                    Destination = new Destination { ToAddresses = new List<string> { to } },
+                    Message = new Message
+                    {
+                        Subject = new Content(messageHeader),
+                        Body = new Body
+                        {
+                            Html = new Content { Data = messageBody }
+                        }
+                    }
+                };
 
-                // تفعيل إرسال البيانات على شكل Multipart Form
-                request.AlwaysMultipartFormData = true;
+                var response = await client.SendEmailAsync(sendRequest);
 
-                // إضافة المعلمات Parameters
-                request.AddParameter("from", "Murtadha <inbook@usetit.io>");
-                request.AddParameter("subject", messageHeader);
-                request.AddParameter("to", to);
-                request.AddParameter("text", messageBody);
-
-                // إرسال الطلب والتحقق من النتيجة
-                RestResponse response = await client.ExecuteAsync(request);
-
-                // التحقق من نجاح أو فشل العملية
-                if (response.IsSuccessful)
-                    return VerificationKey;
-
-                return null;
+                return response.HttpStatusCode == System.Net.HttpStatusCode.OK ? verificationKey : null;
             }
             catch
             {
                 return null;
             }
         }
+
     }
 }

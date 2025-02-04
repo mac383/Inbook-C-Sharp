@@ -5,6 +5,8 @@ G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTm
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\Fekra_ApiLayer.deps.json
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\Fekra_ApiLayer.runtimeconfig.json
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\Fekra_ApiLayer.pdb
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\AWSSDK.Core.dll
+G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\AWSSDK.SimpleEmail.dll
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\Azure.Core.dll
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\Azure.Identity.dll
 G:\inbook\Fekra-C-Sharp\Fekra c#\Fekra_ApiLayer\obj\Release\net8.0\win-x86\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll

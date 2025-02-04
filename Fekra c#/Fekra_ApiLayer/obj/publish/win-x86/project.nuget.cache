@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yjUqHE9XBhI0ZTKKRsEv3WyocQ4u1oqw3qwdUb958obGZDubVcIS4qlNfbNajjoS7u9v5EEVkHFwE8qXUfjg0Q==",
+  "dgSpecHash": "CgTNxh8IshonKZDSyT4HkallKpS++jcIZyn3VKHEVHm34m4J9zfj1sxl/PvJ+mTu5B3G978XTUUtMnJ1jc6i/A==",
   "success": true,
   "projectFilePath": "G:\\inbook\\Fekra-C-Sharp\\Fekra c#\\Fekra_ApiLayer\\Fekra_ApiLayer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\2021\\.nuget\\packages\\awssdk.core\\3.7.401.7\\awssdk.core.3.7.401.7.nupkg.sha512",
+    "C:\\Users\\2021\\.nuget\\packages\\awssdk.simpleemail\\3.7.402.30\\awssdk.simpleemail.3.7.402.30.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
