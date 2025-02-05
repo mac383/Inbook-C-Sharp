@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fekra_DataAccessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02c9cb761ce569d1930cc138e121c3f136f47089")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79da6c8b61c6c47bb603f8cec0048baf9fc070f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fekra_DataAccessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fekra_DataAccessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

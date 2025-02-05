@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 cls_database.Initialize(builder.Configuration);
 
 // configure firebase
-builder.Services.Configure<md_FirebaseConfig>(builder.Configuration.GetSection("Firebase"));
+builder.Services.Configure<md_s3Config>(builder.Configuration.GetSection("s3Config"));
 
 // إضافة IHttpClientFactory
 builder.Services.AddHttpClient();
