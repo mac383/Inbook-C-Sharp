@@ -61,7 +61,8 @@ namespace Fekra_ApiLayer.Controllers
                     () => request.UserFullName,
                     () => request.MemoryData,
                     () => request.Topic,
-                    () => request.Branch
+                    () => request.Branch,
+                    () => request.IsFreeSubscription
                 );
 
                 await cls_Errors_D.LogErrorAsync(new md_NewError

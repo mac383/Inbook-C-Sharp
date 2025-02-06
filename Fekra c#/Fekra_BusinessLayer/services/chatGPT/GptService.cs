@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Azure.Core;
 using Fekra_DataAccessLayer.classes;
 using Fekra_DataAccessLayer.models.Errors;
+using System.Reflection;
 
 namespace Fekra_BusinessLayer.services.chatGPT
 {
@@ -103,10 +104,14 @@ namespace Fekra_BusinessLayer.services.chatGPT
                 var messages = BuildMessages(systemMessage, userRequest);
 
                 //model = "gpt-4",
+                //model = "gpt-3.5-turbo",
+                //model = "gpt-4-turbo",
+
+                string model = userRequest.IsFreeSubscription ? "gpt-3.5-turbo" : "gpt-4-turbo";
 
                 var requestBody = new
                 {
-                    model = "gpt-3.5-turbo",
+                    model = model,
                     messages,
                     temperature = 0.7
                 };
@@ -153,6 +158,10 @@ namespace Fekra_BusinessLayer.services.chatGPT
                     messages.Add(new { role = "user", content = question });
                     messages.Add(new { role = "assistant", content = answer });
                 }
+            }
+            else
+            {
+                messages.Add(new { role = "assistant", content = "أهلًا وسهلًا! أنا ظفر، معلمتك الذكية. شلونك اليوم؟ 😊\n إذا كان عندك أي سؤال أو حاب تعرف شي، أنا هنا بكل سرور أساعدك!",});
             }
 
             messages.Add(new { role = "user", content = userRequest.UserInput });

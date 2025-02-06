@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fekra_BusinessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79da6c8b61c6c47bb603f8cec0048baf9fc070f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e813236d292ea49a075261099e2a239284acaeda")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fekra_BusinessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fekra_BusinessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

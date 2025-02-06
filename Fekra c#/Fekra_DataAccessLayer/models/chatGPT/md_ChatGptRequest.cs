@@ -9,19 +9,15 @@ namespace Fekra_DataAccessLayer.models.chatGPT
     public class md_ChatGptRequest
     {
         public int ConversationId { get; set; }
-
         public string UserInput { get; set; }
-
         public string UserFullName { get; set; }
-
         public string MemoryData { get; set; }
-
         public string Topic { get; set; }
-
         public string Branch { get; set; }
+        public bool IsFreeSubscription { get; set; }
         public List<PreviousConversation> PreviousConversations { get; set; }
 
-        public md_ChatGptRequest(int conversationId, string userInput, string userFullName, string memoryData, string topic, string branch, List<PreviousConversation> previousConversations)
+        public md_ChatGptRequest(int conversationId, string userInput, string userFullName, string memoryData, string topic, string branch, bool isFreeSubscription, List<PreviousConversation> previousConversations)
         {
             ConversationId = conversationId;
             UserInput = userInput;
@@ -29,6 +25,7 @@ namespace Fekra_DataAccessLayer.models.chatGPT
             MemoryData = memoryData;
             Topic = topic;
             Branch = branch;
+            IsFreeSubscription = isFreeSubscription;
             PreviousConversations = previousConversations ?? new List<PreviousConversation>();
         }
     }
