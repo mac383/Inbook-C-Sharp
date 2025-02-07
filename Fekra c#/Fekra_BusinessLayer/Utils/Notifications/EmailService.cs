@@ -3,6 +3,7 @@ using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using System;
 using System.Reflection.Metadata;
+using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 
 namespace Fekra_BusinessLayer.Utils.Notifications
@@ -11,9 +12,12 @@ namespace Fekra_BusinessLayer.Utils.Notifications
     {
         private readonly string _sourceEmail = "info@inbook.tech";
         private readonly RegionEndpoint _awsRegion = RegionEndpoint.EUNorth1;
-        private readonly string _accessKey = "AKIA2MNVMGKAFWMXYKPP";
-        private readonly string _secretKey = "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";
+        private readonly string _accessKey = "AKIA2MNVMGKABDHMQCYC";
+        private readonly string _secretKey = "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";
 
+        // first access key: AKIA2MNVMGKAFWMXYKPP
+        // first secret key: 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
+        // regin for s3    "region": "us-east-1"
         public async Task<string?> SendEmailVerification(string to, string messageHeader, string messageBody, string verificationKey)
         {
             try

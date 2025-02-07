@@ -6240,40 +6240,6 @@
     ]
   },
   {
-    "ContainingType": "Fekra_ApiLayer.Controllers.FirebaseConfigController",
-    "Method": "GetFirebaseConfig",
-    "RelativePath": "api/FirebaseConfig/GetFirebaseConfig",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "Fekra_ApiLayer.Common.ApiResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 500
-      }
-    ]
-  },
-  {
     "ContainingType": "Fekra_ApiLayer.Controllers.GeneralQuestionsController",
     "Method": "DeleteGeneralQuestionAsync",
     "RelativePath": "api/GeneralQuestions/DeleteGeneralQuestion/{questionId}/{byAdmin}",
@@ -7360,6 +7326,40 @@
           "text/json"
         ],
         "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.S3ConfigController",
+    "Method": "GetS3Config",
+    "RelativePath": "api/S3Config/GetS3Config",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Fekra_ApiLayer.Common.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       },
       {
         "Type": "System.Void",
