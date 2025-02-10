@@ -215,5 +215,58 @@ namespace Fekra_BusinessLayer.services.chatGPT
                 Params
             ));
         }
+
+
+        public async Task<string> GetResponseFromDeepSeekAsync(md_ChatGptRequest userRequest, string summary)
+        {
+            if (string.IsNullOrWhiteSpace(userRequest.UserInput))
+                return string.Empty;
+
+            string _apiKey = "sk-0877a5680e8649ab9f9d4104bf4ec24d";
+
+            try
+            {
+                string systemMessage = new PromptGenerator(
+                    userRequest.UserFullName,
+                    userRequest.Branch,
+                    userRequest.Topic,
+                    userRequest.MemoryData,
+                    summary
+                ).GeneratePrompt();
+
+                var messages = BuildMessages(systemMessage, userRequest);
+
+                // استخدام نموذج DeepSeek-V3
+                string model = "deepseek-chat";
+
+                var requestBody = new
+                {
+                    model = model,
+                    messages,
+                    temperature = 0.7
+                };
+
+                var content = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://api.deepseek.com/v1/chat/completions")
+                {
+                    Headers =
+                    {
+                        { "Authorization", $"Bearer {_apiKey}" }
+                    },
+                    Content = content
+                };
+
+                var response = await _httpClient.SendAsync(request);
+
+                return await HandleResponseAsync(response);
+            }
+            catch (Exception ex)
+            {
+                await LogErrorAsync(ex, userRequest);
+                return string.Empty;
+            }
+        }
+
     }
 }

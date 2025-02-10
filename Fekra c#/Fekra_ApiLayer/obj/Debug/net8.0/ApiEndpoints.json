@@ -4703,6 +4703,22 @@
   },
   {
     "ContainingType": "Fekra_ApiLayer.Controllers.DhaferController",
+    "Method": "ChatWithDeepSeek",
+    "RelativePath": "api/Dhafer/deepseek-chat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userRequest",
+        "Type": "Fekra_DataAccessLayer.models.chatGPT.md_ChatGptRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fekra_ApiLayer.Controllers.DhaferController",
     "Method": "GetResponseFromGPTAsync",
     "RelativePath": "api/Dhafer/GetResponseFromGPT",
     "HttpMethod": "POST",

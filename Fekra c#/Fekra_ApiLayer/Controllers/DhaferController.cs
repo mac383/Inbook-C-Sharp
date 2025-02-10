@@ -12,6 +12,13 @@ using Fekra_DataAccessLayer.models.AI_Messages;
 using Fekra_DataAccessLayer.classes;
 using Fekra_DataAccessLayer.models.Errors;
 using Fekra_ApiLayer.Common.JwtAuth;
+using Newtonsoft.Json;
+
+
+
+
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Fekra_ApiLayer.Controllers
 {
@@ -80,5 +87,28 @@ namespace Fekra_ApiLayer.Controllers
                 return StatusCode(500, new ApiResponse(false, "حدث خطأ أثناء معالجة الطلب.", new { message = ex.Message }));
             }
         }
+
+
+        [HttpPost("deepseek-chat")]
+        public async Task<IActionResult> ChatWithDeepSeek([FromBody] md_ChatGptRequest userRequest)
+        {
+            if (userRequest == null || string.IsNullOrWhiteSpace(userRequest.UserInput))
+            {
+                return BadRequest(new { error = "الطلب غير صالح، يرجى إدخال بيانات صحيحة." });
+            }
+
+            string summary = "";  // يمكن تحسينه لاحقًا
+            var response = await _gptService.GetResponseFromDeepSeekAsync(userRequest, summary);
+
+            if (string.IsNullOrEmpty(response))
+            {
+                return BadRequest(new { error = "لم يتمكن DeepSeek من توليد استجابة." });
+            }
+
+            return Ok(new { response });
+        }
+
+
+
     }
 }

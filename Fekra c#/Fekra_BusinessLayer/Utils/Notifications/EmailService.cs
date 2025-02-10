@@ -12,8 +12,8 @@ namespace Fekra_BusinessLayer.Utils.Notifications
     {
         private readonly string _sourceEmail = "info@inbook.tech";
         private readonly RegionEndpoint _awsRegion = RegionEndpoint.EUNorth1;
-        private readonly string _accessKey = "AKIA2MNVMGKABDHMQCYC";
-        private readonly string _secretKey = "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";
+        private readonly string _accessKey = "AKIA2MNVMGKAPYESJZPE";
+        private readonly string _secretKey = "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";
 
         // first access key: AKIA2MNVMGKAFWMXYKPP
         // first secret key: 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
