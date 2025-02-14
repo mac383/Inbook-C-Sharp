@@ -1,7 +1,10 @@
 ﻿using Amazon.SimpleEmail.Model;
 using System;
 using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using RestSharp;
 
 namespace Fekra_BusinessLayer.Utils.Notifications
 {
@@ -15,140 +18,179 @@ namespace Fekra_BusinessLayer.Utils.Notifications
             _Notification = notification;
         }
 
-        public async Task<string?> SendEmail(string to, string username, EN_MessageType messageType)
+        public async Task<string?> SendEmailByInfibip(string to, string username, EN_MessageType messageType)
         {
-            string verificationCode = KeyProvider.GetKey(6, 1, KeyProvider.EN_KeyType.Numbers);
-
-            if (string.IsNullOrEmpty(verificationCode))
-                return null;
-
-            string messageHeader = "";
-            string messageBody = "";
-            string greeting = "";
-            string message = "";
-            string additionalMessage = "";
-
-            switch (messageType)
+            try
             {
-                case EN_MessageType.RegistrationConfirmation:
-                    messageHeader = "تأكيد التسجيل";
-                    greeting = $"مرحبًا {username}!";
-                    message = $"شكرًا لتسجيلك في منصتنا. نحن سعداء بانضمامك إلينا! لتأكيد بريدك الإلكتروني وتفعيل حسابك، يرجى استخدام كود التفعيل التالي:";
-                    additionalMessage = "إذا لم تقم بتسجيل هذا الحساب، يمكنك تجاهل هذه الرسالة.";
-                    break;
+                string verificationCode = KeyProvider.GetKey(6, 1, KeyProvider.EN_KeyType.Numbers);
+                if (string.IsNullOrEmpty(verificationCode))
+                    return null;
 
-                case EN_MessageType.PasswordResetConfirmation:
-                    messageHeader = "إعادة تعيين كلمة المرور";
-                    greeting = $"مرحبًا {username}!";
-                    message = $"تم طلب إعادة تعيين كلمة المرور. لتأكيد العملية، يرجى استخدام كود التفعيل التالي:";
-                    additionalMessage = "إذا لم تقم بطلب إعادة تعيين كلمة المرور، يمكنك تجاهل هذه الرسالة.";
-                    break;
+                string messageHeader = "";
+                string greeting = "";
+                string message = "";
 
-                case EN_MessageType.EmailVerification:
-                    messageHeader = "تأكيد البريد الإلكتروني";
-                    greeting = $"مرحبًا {username}!";
-                    message = $"لتأكيد بريدك الإلكتروني، يرجى استخدام كود التفعيل التالي:";
-                    additionalMessage = "إذا لم تقم بتسجيل هذا الحساب، يمكنك تجاهل هذه الرسالة.";
-                    break;
+                // إعداد الرسالة بناءً على نوع الرسالة
+                switch (messageType)
+                {
+                    case EN_MessageType.RegistrationConfirmation:
+                        messageHeader = "تأكيد التسجيل";
+                        greeting = $"مرحبًا {username}!";
+                        message = $"شكرًا لتسجيلك في منصتنا. نحن سعداء بانضمامك إلينا! لتأكيد بريدك الإلكتروني وتفعيل حسابك، يرجى استخدام كود التفعيل التالي:";
+                        break;
+
+                    case EN_MessageType.PasswordResetConfirmation:
+                        messageHeader = "إعادة تعيين كلمة المرور";
+                        greeting = $"مرحبًا {username}!";
+                        message = $"تم طلب إعادة تعيين كلمة المرور. لتأكيد العملية، يرجى استخدام كود التفعيل التالي:";
+                        break;
+
+                    case EN_MessageType.EmailVerification:
+                        messageHeader = "تأكيد البريد الإلكتروني";
+                        greeting = $"مرحبًا {username}!";
+                        message = $"لتأكيد بريدك الإلكتروني، يرجى استخدام كود التفعيل التالي:";
+                        break;
+                }
+
+                // استخدام دالة لتصميم الرسالة بتنسيق HTML
+                string messageBody = GetEmailBodyHtml(messageHeader, greeting, message, verificationCode);
+
+                var options = new RestClientOptions("https://1v4gpn.api.infobip.com")
+                {
+                    ThrowOnAnyError = true
+                };
+                var client = new RestClient(options);
+
+                // إعداد طلب POST
+                var request = new RestRequest("/email/3/send", Method.Post);
+                // إضافة الرؤوس Headers
+                request.AddHeader("Authorization", "App 2b58065efa119bbf58b11fd213bccaa6-4f8b1435-9822-4014-8551-0f19dc526beb");
+                request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("Accept", "application/json");
+
+                // تفعيل إرسال البيانات على شكل Multipart Form
+                request.AlwaysMultipartFormData = true;
+
+                // إضافة المعلمات Parameters
+                request.AddParameter("from", "InBook <info@inbook.tech>");
+                request.AddParameter("subject", messageHeader);
+                request.AddParameter("to", to);
+                request.AddParameter("html", messageBody); // إرسال الرسالة بتنسيق HTML
+
+                // إرسال الطلب والتحقق من النتيجة
+                RestResponse response = await client.ExecuteAsync(request);
+
+                // التحقق من نجاح أو فشل العملية
+                if (response.IsSuccessful)
+                    return verificationCode;
+
+                return null;
             }
-
-            messageBody = GetEmailTemplate();
-            messageBody = messageBody.Replace("{greeting}", greeting)
-                   .Replace("{message}", message)
-                   .Replace("{verificationCode}", verificationCode)
-                   .Replace("{additionalMessage}", additionalMessage)
-                   .Replace("{emailSubject}", messageHeader);
-
-            return await _Notification.SendEmailVerification(to, messageHeader, messageBody, verificationCode);
+            catch
+            {
+                return null;
+            }
         }
 
-        private string GetEmailTemplate()
+        private string GetEmailBodyHtml(string messageHeader, string greeting, string message, string verificationCode)
         {
-            string template = @"
-<!DOCTYPE html>
-<html lang='ar'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>inBook</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: right; /* جعل النص من اليمين لليسار */
-            direction: rtl;  /* جعل اتجاه النص RTL */
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .container {
-            max-width: 700px;
-            width: 90%;
-            margin: auto;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            direction: rtl;
-        }
-        h2 {
-            color: #333;
-            direction: rtl;
-        }
-        .message {
-            font-size: 16px;
-        }
-        .verification-code {
-            direction: rtl;
-            background: #4154f1; /* اللون الأساسي */
-            color: white;
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .footer {
-            direction: rtl;
-            color: #777;
-            font-size: 14px;
-        }
-        .footer a {
-            direction: rtl;
-            color: #4154f1; /* اللون الأساسي */
-            text-decoration: none;
-        }
-        .header {
-            padding: 10px;
-            border-radius: 10px;
-            background: #4154f1;
-            color: white;
-            direction: ltr;
-        }
-        .header h1 {
-            width: 100%;
-            text-align: center;
-            margin: 0;
-            font-size: 36px;
-        }
-    </style>
-</head>
-<body>
-    <div class='container'>
-        <div class='header'>
-            <h1>inBook</h1>
+            return $@"
+<html>
+    <head>
+        <style>
+            body {{
+                font-family: 'Arial', sans-serif;
+                color: #333333;
+                background-color: #f7f8fc;
+                padding: 20px;
+                margin: 0;
+                direction: rtl;
+                text-align: right;
+            }}
+            .email-container {{
+                background-color: #ffffff;
+                border-radius: 10px;
+                padding: 40px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                width: 600px;
+                margin: 0 auto;
+                direction: rtl;
+            }}
+            h1 {{
+                color: #ffffff;
+                background-color: #4154f1;
+                font-size: 24px;
+                font-weight: 600;
+                direction: rtl;
+                padding: 10px;
+                border-radius: 7px;
+                margin: 10px auto;
+                text-align: center;
+            }}
+            .platform-name {{
+                color: #4154f1;
+                font-size: 30px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                direction: rtl;
+            }}
+            p {{
+                font-size: 16px;
+                line-height: 1.6;
+                color: #555555;
+                margin-bottom: 15px;
+                direction: rtl;
+            }}
+            .verification-code {{
+                width: fit-content;
+                font-size: 18px;
+                font-weight: bold;
+                color: #ffffff;
+                background-color: #4154f1;
+                padding: 15px;
+                border-radius: 8px;
+                text-align: center;
+                margin: 20px 0;
+                direction: rtl;
+            }}
+            .footer {{
+                font-size: 12px;
+                color: #999999;
+                margin-top: 30px;
+                text-align: center;
+                direction: rtl;
+            }}
+            .message-container {{
+                margin-bottom: 25px;
+                direction: rtl;
+            }}
+            .greeting {{
+                font-size: 18px;
+                color: #333333;
+                direction: rtl;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class='email-container'>
+            <div class='platform-name'>
+                inBook
+            </div>
+            <h1>{messageHeader}</h1>
+            <p class='greeting'>{greeting}</p>
+            <div class='message-container'>
+                <p>{message}</p>
+                <div class='verification-code'>
+                    <strong>{verificationCode}</strong>
+                </div>
+            </div>
+            <div class='footer'>
+                <p>إذا لم تطلب هذا البريد، يمكنك تجاهل هذه الرسالة.</p>
+                <p>&copy; 2025 inBook. كل الحقوق محفوظة.</p>
+            </div>
         </div>
-        <h2>{greeting}</h2>
-        <p class='message'>{message}</p>
-        <h3 class='verification-code'>{verificationCode}</h3>
-        <p>{additionalMessage}</p>
-        <p class='footer'>
-            إذا كنت بحاجة إلى مساعدة، يمكنك التواصل مع فريق الدعم عبر
-            <a href='mailto:support@inbook.tech'>support@inbook.tech</a>.<br>
-            مع أطيب التحيات
-        </p>
-    </div>
-</body>
+    </body>
 </html>";
-            return template;
         }
     }
 }

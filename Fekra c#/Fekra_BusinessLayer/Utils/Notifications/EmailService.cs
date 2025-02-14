@@ -12,12 +12,9 @@ namespace Fekra_BusinessLayer.Utils.Notifications
     {
         private readonly string _sourceEmail = "info@inbook.tech";
         private readonly RegionEndpoint _awsRegion = RegionEndpoint.EUNorth1;
-        private readonly string _accessKey = "AKIA2MNVMGKAPYESJZPE";
-        private readonly string _secretKey = "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";
+        private readonly string _accessKey = "AKIA2MNVMGKAGKQSYZUP";
+        private readonly string _secretKey = "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";
 
-        // first access key: AKIA2MNVMGKAFWMXYKPP
-        // first secret key: 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
-        // regin for s3    "region": "us-east-1"
         public async Task<string?> SendEmailVerification(string to, string messageHeader, string messageBody, string verificationKey)
         {
             try

@@ -12,24 +12,23 @@ namespace Fekra_ApiLayer.Controllers
     [ApiController]
     public class NotificationsController : ControllerBase
     {
-        // completed testing.
         [HttpGet("SendRegistrationConfirmationEmail/{to}/{username}", Name = "SendRegistrationConfirmationEmail")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SendRegistrationConfirmationEmailAsync(string to, string username)
+        public async Task<ActionResult<ApiResponse>> SendRegistrationConfirmationEmail(string to, string username)
         {
             if (!Validation.IsEmailValid(to))
                 return BadRequest(new ApiResponse(false, "Invalid email.", new { }));
 
             if (!Validation.IsUsernameValid(username))
                 return BadRequest(new ApiResponse(false, "Invalid username.", new { }));
-             
+
             try
             {
                 NotificationService notification = new NotificationService(new EmailService());
-                
-                string? response = await notification.SendEmail(to, username, NotificationService.EN_MessageType.RegistrationConfirmation);
+
+                string? response = await notification.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.RegistrationConfirmation);
 
                 if (response == null)
                     return StatusCode
@@ -71,12 +70,11 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
-        // completed testing.
         [HttpGet("SendPasswordResetConfirmationEmail/{to}/{username}", Name = "SendPasswordResetConfirmationEmail")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SendPasswordResetConfirmationEmailAsync(string to, string username)
+        public async Task<ActionResult<ApiResponse>> SendPasswordResetConfirmationEmail(string to, string username)
         {
             if (!Validation.IsEmailValid(to))
                 return BadRequest(new ApiResponse(false, "Invalid email.", new { }));
@@ -88,7 +86,7 @@ namespace Fekra_ApiLayer.Controllers
             {
                 NotificationService notification = new NotificationService(new EmailService());
 
-                string? response = await notification.SendEmail(to, username, NotificationService.EN_MessageType.PasswordResetConfirmation);
+                string? response = await notification.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.PasswordResetConfirmation);
 
                 if (response == null)
                     return StatusCode
@@ -130,12 +128,11 @@ namespace Fekra_ApiLayer.Controllers
             }
         }
 
-        // completed testing.
         [HttpGet("SendEmailVerification/{to}/{username}", Name = "SendEmailVerification")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse>> SendEmailVerificationAsync(string to, string username)
+        public async Task<ActionResult<ApiResponse>> SendEmailVerification(string to, string username)
         {
             if (!Validation.IsEmailValid(to))
                 return BadRequest(new ApiResponse(false, "Invalid email.", new { }));
@@ -147,7 +144,7 @@ namespace Fekra_ApiLayer.Controllers
             {
                 NotificationService notification = new NotificationService(new EmailService());
 
-                string? response = await notification.SendEmail(to, username, NotificationService.EN_MessageType.EmailVerification);
+                string? response = await notification.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.EmailVerification);
 
                 if (response == null)
                     return StatusCode
