@@ -98,7 +98,7 @@ namespace Fekra_BusinessLayer.services.chatGPT
                     userRequest.Branch,
                     userRequest.Topic,
                     userRequest.MemoryData,
-                    summary
+                    summary, userRequest.IsFreeSubscription
                 ).GeneratePrompt();
 
                 var messages = BuildMessages(systemMessage, userRequest);
@@ -216,7 +216,10 @@ namespace Fekra_BusinessLayer.services.chatGPT
             ));
         }
 
-
+        /// <summary>
+        /// دالة غير مستخدمة حالياً لأن النظام يعتمد على OpenAI بدلاً من DeepSeek.
+        /// تم الاحتفاظ بها للمرجعية أو للاستخدام المستقبلي إذا دعت الحاجة.
+        /// </summary>
         public async Task<string> GetResponseFromDeepSeekAsync(md_ChatGptRequest userRequest, string summary)
         {
             if (string.IsNullOrWhiteSpace(userRequest.UserInput))
@@ -231,7 +234,8 @@ namespace Fekra_BusinessLayer.services.chatGPT
                     userRequest.Branch,
                     userRequest.Topic,
                     userRequest.MemoryData,
-                    summary
+                    summary,
+                    userRequest.IsFreeSubscription
                 ).GeneratePrompt();
 
                 var messages = BuildMessages(systemMessage, userRequest);
@@ -267,6 +271,5 @@ namespace Fekra_BusinessLayer.services.chatGPT
                 return string.Empty;
             }
         }
-
     }
 }
