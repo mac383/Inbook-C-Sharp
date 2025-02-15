@@ -9,7 +9,10 @@ namespace Fekra_BusinessLayer.Utils.Notifications
 {
     public interface INotification
     {
-        // completed testing.
+        /*
+            INotification: واجهة (Interface) لتعريف خدمة إرسال التحقق عبر البريد الإلكتروني.
+            حالياً، هذه الواجهة غير مستخدمة.
+        */
         public Task<string?> SendEmailVerification(string to, string messageHeader, string messageBody, string VerificationKey);
     }
 }

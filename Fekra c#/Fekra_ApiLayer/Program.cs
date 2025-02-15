@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Initialize the database
 cls_database.Initialize(builder.Configuration);
 
-// configure firebase
+// configure s3
 builder.Services.Configure<md_s3Config>(builder.Configuration.GetSection("s3Config"));
 
 // إضافة IHttpClientFactory
@@ -28,12 +28,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins",
         builder => builder.WithOrigins("http://localhost:3000",
-                                       "https://test-383.netlify.app",
                                        "http://192.168.1.105:3000",
-                                       "https://console.inbook.tech",
+                                       "https://test-383.netlify.app",
                                        "https://dashboard.inbook.tech",
                                        "https://inbook.tech",
-                                       "https://www.inbook.tech") // أضف المزيد من النطاقات هنا إذا لزم الأمر
+                                       "https://www.inbook.tech")
                           .AllowAnyMethod()
                           .AllowAnyHeader());
 });

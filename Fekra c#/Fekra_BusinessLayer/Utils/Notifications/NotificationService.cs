@@ -11,14 +11,8 @@ namespace Fekra_BusinessLayer.Utils.Notifications
     public class NotificationService
     {
         public enum EN_MessageType { RegistrationConfirmation, PasswordResetConfirmation, EmailVerification }
-        private INotification _Notification;
 
-        public NotificationService(INotification notification)
-        {
-            _Notification = notification;
-        }
-
-        public async Task<string?> SendEmailByInfibip(string to, string username, EN_MessageType messageType)
+        public static async Task<string?> SendEmailByInfibip(string to, string username, EN_MessageType messageType)
         {
             try
             {
@@ -92,7 +86,7 @@ namespace Fekra_BusinessLayer.Utils.Notifications
             }
         }
 
-        private string GetEmailBodyHtml(string messageHeader, string greeting, string message, string verificationCode)
+        private static string GetEmailBodyHtml(string messageHeader, string greeting, string message, string verificationCode)
         {
             return $@"
 <html>

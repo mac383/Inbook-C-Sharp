@@ -10,10 +10,16 @@ namespace Fekra_BusinessLayer.Utils.Notifications
 {
     public class EmailService : INotification
     {
-        private readonly string _sourceEmail = "info@inbook.tech";
+
+        /*
+            EmailService: هذه الخدمة مسؤولة عن إرسال رسائل التحقق عبر AWS SES.
+            حالياً، هذه الخدمة غير مستخدمة.
+        */
+
+        private readonly string _sourceEmail = "";
         private readonly RegionEndpoint _awsRegion = RegionEndpoint.EUNorth1;
-        private readonly string _accessKey = "AKIA2MNVMGKAGKQSYZUP";
-        private readonly string _secretKey = "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";
+        private readonly string _accessKey = "";
+        private readonly string _secretKey = "";
 
         public async Task<string?> SendEmailVerification(string to, string messageHeader, string messageBody, string verificationKey)
         {
@@ -49,6 +55,5 @@ namespace Fekra_BusinessLayer.Utils.Notifications
                 return null;
             }
         }
-
     }
 }

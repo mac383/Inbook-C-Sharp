@@ -26,9 +26,7 @@ namespace Fekra_ApiLayer.Controllers
 
             try
             {
-                NotificationService notification = new NotificationService(new EmailService());
-
-                string? response = await notification.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.RegistrationConfirmation);
+                string? response = await NotificationService.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.RegistrationConfirmation);
 
                 if (response == null)
                     return StatusCode
@@ -84,9 +82,7 @@ namespace Fekra_ApiLayer.Controllers
 
             try
             {
-                NotificationService notification = new NotificationService(new EmailService());
-
-                string? response = await notification.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.PasswordResetConfirmation);
+                string? response = await NotificationService.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.PasswordResetConfirmation);
 
                 if (response == null)
                     return StatusCode
@@ -142,9 +138,7 @@ namespace Fekra_ApiLayer.Controllers
 
             try
             {
-                NotificationService notification = new NotificationService(new EmailService());
-
-                string? response = await notification.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.EmailVerification);
+                string? response = await NotificationService.SendEmailByInfibip(to, username, NotificationService.EN_MessageType.EmailVerification);
 
                 if (response == null)
                     return StatusCode
