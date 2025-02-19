@@ -2,6 +2,7 @@
 using Fekra_ApiLayer.Common.JwtAuth;
 using Fekra_BusinessLayer.services;
 using Fekra_BusinessLayer.Utils;
+using Fekra_BusinessLayer.Utils.Notifications;
 using Fekra_DataAccessLayer.models.Admins;
 using Fekra_DataAccessLayer.models.Users;
 using Microsoft.AspNetCore.Http;
@@ -635,6 +636,13 @@ namespace Fekra_ApiLayer.Controllers
 
                 if (insertedId <= 0)
                     return BadRequest(new ApiResponse(false, "User doesn't inserted successfully.", new { }));
+
+                await NotificationService.SendEmailByInfibip
+                    (
+                        "murtadhamuhammad383@gmail.com",
+                        user.UserName,
+                        NotificationService.EN_MessageType.NewUserNotification
+                    );
 
                 return CreatedAtRoute
                     (
